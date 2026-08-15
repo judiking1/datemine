@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { type CalendarData, resolveDay, toIsoDate } from "./calendar.js";
-import { type DailyContext, isPublishable } from "./published.js";
+import { type CalendarData, resolveDay, toIsoDate } from "./calendar";
+import { type DailyContext, isPublishable } from "./published";
 
 const data: CalendarData = {
   fixedEvents: [

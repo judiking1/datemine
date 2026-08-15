@@ -1,4 +1,4 @@
-import type { DayType } from "./published.js";
+import type { DayType } from "./published";
 
 /**
  * A single dated entry in the Korean calendar backbone (Layer 2, no personal data).
