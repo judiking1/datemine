@@ -17,6 +17,16 @@ const data: CalendarData = {
       "2026-07-17": { name: "초복", significance: "삼복더위의 시작." },
     },
   },
+  lunarHolidaysByYear: {
+    2026: {
+      "2026-09-25": {
+        name: "추석",
+        significance: "한가위. 성역할·잔소리 논란이 반복된다.",
+        dayType: "holiday",
+        lunarKey: "chuseok",
+      },
+    },
+  },
 };
 
 describe("resolveDay — daily-content guarantee", () => {
@@ -30,6 +40,12 @@ describe("resolveDay — daily-content guarantee", () => {
     const entry = resolveDay("2026-07-17", data);
     expect(entry.dayType).toBe("solarTerm");
     expect(entry.name).toBe("초복");
+  });
+
+  it("resolves a lunar holiday by its per-year solar date and exposes lunarKey", () => {
+    const entry = resolveDay("2026-09-25", data);
+    expect(entry.name).toBe("추석");
+    expect(entry.lunarKey).toBe("chuseok");
   });
 
   it("never returns an empty day — ordinary fallback always has content", () => {

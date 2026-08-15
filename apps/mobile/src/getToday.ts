@@ -1,5 +1,5 @@
 import { type DailyContext, resolveDay } from "@datemine/domain";
-import { seedCalendar, seedCardsByMonthDay } from "./data/seed";
+import { seedCalendar, seedCardsByLunarKey, seedCardsByMonthDay } from "./data/seed";
 
 function monthDay(isoDate: string): string {
   const [, month, day] = isoDate.split("-");
@@ -7,9 +7,9 @@ function monthDay(isoDate: string): string {
 }
 
 /**
- * Resolve today's DailyContext. Returns a curated card when one exists for the date,
- * otherwise builds a non-empty fallback from the calendar backbone so the app never
- * shows an empty day (see the daily-content guarantee).
+ * Resolve today's DailyContext. Priority: fixed-date card → lunar-holiday card (matched
+ * via the year's resolved lunarKey) → non-empty calendar fallback, so the app never shows
+ * an empty day (see the daily-content guarantee).
  */
 export function getDailyContext(isoDate: string): DailyContext {
   const card = seedCardsByMonthDay[monthDay(isoDate)];
@@ -18,6 +18,14 @@ export function getDailyContext(isoDate: string): DailyContext {
   }
 
   const entry = resolveDay(isoDate, seedCalendar);
+
+  if (entry.lunarKey) {
+    const lunarCard = seedCardsByLunarKey[entry.lunarKey];
+    if (lunarCard) {
+      return { date: isoDate, ...lunarCard };
+    }
+  }
+
   return {
     date: isoDate,
     dayType: entry.dayType,

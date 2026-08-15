@@ -148,4 +148,61 @@ export const seedCalendar: CalendarData = {
       "2026-07-17": { name: "초복", significance: "삼복더위의 시작." },
     },
   },
+  // Lunar holidays shift each year; solar dates are supplied per year (like solar terms).
+  lunarHolidaysByYear: {
+    2026: {
+      "2026-02-17": {
+        name: "설날",
+        significance: "음력 새해. 가족이 모이며 성역할·잔소리 갈등이 반복된다.",
+        dayType: "holiday",
+        lunarKey: "seollal",
+      },
+      "2026-09-25": {
+        name: "추석",
+        significance: "한가위. 차례·명절 노동의 성역할과 세대 잔소리가 반복된다.",
+        dayType: "holiday",
+        lunarKey: "chuseok",
+      },
+    },
+  },
 };
+
+/**
+ * Published cards for lunar holidays, keyed by stable lunarKey (not date) so they hold
+ * across years even though the solar date moves.
+ */
+export const seedCardsByLunarKey: Readonly<Record<string, Omit<DailyContext, "date">>> = {
+  seollal: lunarFamilyCard("설날"),
+  chuseok: lunarFamilyCard("추석"),
+};
+
+function lunarFamilyCard(name: string): Omit<DailyContext, "date"> {
+  return {
+    dayType: "holiday",
+    significance: `${name}. 가족이 모이는 명절엔 성역할·잔소리 콘텐츠가 매년 논란이 된다.`,
+    advice: `${name} 콘텐츠 낼 거면 "며느리=주방", 취업·결혼 잔소리 밈은 접어라. 공감보다 피로가 먼저 온다.`,
+    riskPatterns: [
+      {
+        pattern: "명절 성역할 고정 재현(며느리 노동·주방)",
+        whyItBackfires:
+          "명절 노동의 성 편중은 이미 사회 쟁점이다. 광고·콘텐츠가 이를 당연시하면 성차별 재현으로 비판받는다.",
+        exampleSummary:
+          "명절 광고가 여성을 가사·주방 담당으로만 그렸다가 성차별 논란으로 비판받은 사례가 반복됐다.",
+        severity: 3,
+        category: "gender",
+        domains: ["business", "media", "general"],
+      },
+      {
+        pattern: "취업·결혼·출산 '명절 잔소리' 소재의 무신경한 활용",
+        whyItBackfires:
+          "잔소리는 세대갈등의 상징이 됐다. 가볍게 웃음 소재로 쓰면 당사자 세대엔 조롱·압박으로 읽힌다.",
+        exampleSummary:
+          "명절 잔소리를 소재로 한 콘텐츠가 세대 감수성 부족으로 역풍을 맞은 사례가 반복됐다.",
+        severity: 2,
+        category: "generation",
+        domains: ["creator", "media", "general"],
+      },
+    ],
+    reviewedAt: "2026-08-16T00:00:00Z",
+  };
+}

@@ -13,6 +13,11 @@ export interface CalendarEntry {
   readonly name: string;
   /** Educational meaning. */
   readonly significance: string;
+  /**
+   * Stable identity for lunar holidays whose solar date shifts each year (e.g.
+   * "seollal", "chuseok"). Lets published cards be keyed independently of the year.
+   */
+  readonly lunarKey?: string;
 }
 
 /**
@@ -28,11 +33,27 @@ export interface FixedEvent {
   readonly significance: string;
 }
 
+/** A lunar holiday's solar occurrence in a given year. */
+export interface LunarHolidayOccurrence {
+  readonly name: string;
+  readonly significance: string;
+  readonly dayType: DayType;
+  /** Stable identity across years (e.g. "seollal", "chuseok"). */
+  readonly lunarKey: string;
+}
+
 export interface CalendarData {
   readonly fixedEvents: readonly FixedEvent[];
   /** Solar terms per year: year -> (yyyy-mm-dd -> {name, significance}). */
   readonly solarTermsByYear: Readonly<
     Record<number, Readonly<Record<string, { name: string; significance: string }>>>
+  >;
+  /**
+   * Lunar holidays per year mapped to their solar date: year -> (yyyy-mm-dd -> occurrence).
+   * Lunar dates shift yearly, so they are supplied per year like solar terms.
+   */
+  readonly lunarHolidaysByYear: Readonly<
+    Record<number, Readonly<Record<string, LunarHolidayOccurrence>>>
   >;
 }
 
@@ -63,6 +84,17 @@ export function resolveDay(isoDate: string, data: CalendarData): CalendarEntry {
       dayType: fixed.dayType,
       name: fixed.name,
       significance: fixed.significance,
+    };
+  }
+
+  const lunar = data.lunarHolidaysByYear[year]?.[isoDate];
+  if (lunar) {
+    return {
+      date: isoDate,
+      dayType: lunar.dayType,
+      name: lunar.name,
+      significance: lunar.significance,
+      lunarKey: lunar.lunarKey,
     };
   }
 
