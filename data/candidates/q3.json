@@ -1,0 +1,123 @@
+[
+  {
+    "dateKey": "07-17",
+    "eventName": "초복",
+    "dayType": "solarTerm",
+    "category": "food",
+    "recurrencePattern": "복날 보양식·먹방 콘텐츠가 몰리며 특정 식문화 조롱·자극적 먹방이 양쪽에서 반발을 부른다.",
+    "severity": 2,
+    "domains": ["creator", "entertainment", "foodservice"],
+    "seasonal": false,
+    "alreadyPublished": true
+  },
+  {
+    "dateKey": "07-25",
+    "eventName": "중복",
+    "dayType": "solarTerm",
+    "category": "food",
+    "recurrencePattern": "복날 보양식 특수에 자극적 먹방·과식 조장 콘텐츠가 쏟아지며 식문화 비하 논쟁이 재점화된다.",
+    "severity": 2,
+    "domains": ["creator", "entertainment", "foodservice"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "08-14",
+    "eventName": "말복",
+    "dayType": "solarTerm",
+    "category": "animalEnv",
+    "recurrencePattern": "복날 개식용·보양식 소비를 둘러싼 동물권 논쟁이 매년 격화되며 관련 마케팅이 양측 공격을 받는다.",
+    "severity": 2,
+    "domains": ["creator", "foodservice", "business"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "08-01",
+    "eventName": "여름 휴가·바캉스 시즌",
+    "dayType": "anniversary",
+    "category": "appearance",
+    "recurrencePattern": "휴가철 몸매·다이어트·비키니 강조 마케팅과 발언이 외모 압박·비하 논란으로 매년 번진다.",
+    "severity": 2,
+    "domains": ["business", "media", "fashion", "creator"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "08-14",
+    "eventName": "일본군 위안부 피해자 기림의 날",
+    "dayType": "memorial",
+    "category": "history",
+    "recurrencePattern": "국가 지정 추모일에 무신경한 경축·프로모션 톤이나 관련 소재 희화화가 역사·성 감수성 부족으로 비판받는다.",
+    "severity": 3,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "08-15",
+    "eventName": "광복절",
+    "dayType": "holiday",
+    "category": "history",
+    "recurrencePattern": "이맘때 가문·조상 미화 발언이 선대 친일 이력 역검증으로 이어져 여론이 악화된다.",
+    "severity": 3,
+    "domains": ["general", "entertainment", "politics"],
+    "seasonal": false,
+    "alreadyPublished": true
+  },
+  {
+    "dateKey": "08-15",
+    "eventName": "광복절",
+    "dayType": "holiday",
+    "category": "nationalism",
+    "recurrencePattern": "국경일에 일본풍 콘셉트 마케팅이나 일본여행 인증이 반일 정서와 충돌해 시의성 검수 실패로 비친다.",
+    "severity": 2,
+    "domains": ["business", "creator", "media"],
+    "seasonal": false,
+    "alreadyPublished": true
+  },
+  {
+    "dateKey": "08-29",
+    "eventName": "경술국치일",
+    "dayType": "memorial",
+    "category": "history",
+    "recurrencePattern": "국권 상실 추모일임을 모른 채 밝은 톤 콘텐츠·일본 관련 소재를 올렸다가 역사 인식 부재로 비판받는다.",
+    "severity": 2,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "07-05",
+    "eventName": "여름 퀴어문화축제 시즌",
+    "dayType": "anniversary",
+    "category": "religion",
+    "recurrencePattern": "여름 성소수자 축제 시즌마다 종교계 반대와 혐오·지지 발언이 충돌해 어느 편에 서든 표적이 된다.",
+    "severity": 2,
+    "domains": ["general", "entertainment", "business"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "lunar:chuseok",
+    "eventName": "추석",
+    "dayType": "holiday",
+    "category": "gender",
+    "recurrencePattern": "명절 노동의 성역할 고정 재현(며느리·주방) 광고·콘텐츠가 성차별 재현으로 매년 비판받는다.",
+    "severity": 3,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": true
+  },
+  {
+    "dateKey": "lunar:chuseok",
+    "eventName": "추석",
+    "dayType": "holiday",
+    "category": "generation",
+    "recurrencePattern": "취업·결혼·출산 '명절 잔소리'를 가볍게 웃음 소재로 쓰다 세대 감수성 부족으로 역풍을 맞는다.",
+    "severity": 2,
+    "domains": ["creator", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": true
+  }
+]

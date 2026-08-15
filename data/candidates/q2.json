@@ -1,0 +1,156 @@
+[
+  {
+    "dateKey": "04-01",
+    "eventName": "만우절",
+    "dayType": "anniversary",
+    "category": "ad",
+    "recurrencePattern": "민감 시국에도 강행한 거짓·장난성 마케팅이 매년 '분위기 파악 실패'로 역풍을 맞는다.",
+    "severity": 2,
+    "domains": ["business", "creator", "media"],
+    "seasonal": false,
+    "alreadyPublished": true
+  },
+  {
+    "dateKey": "04-03",
+    "eventName": "제주 4·3 희생자 추념일",
+    "dayType": "memorial",
+    "category": "history",
+    "recurrencePattern": "추념일마다 사건의 성격을 이념 잣대로 규정하는 발언이 나와 유족을 자극하고 논쟁이 되풀이된다.",
+    "severity": 2,
+    "domains": ["politics", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "04-16",
+    "eventName": "세월호 참사 추념일",
+    "dayType": "memorial",
+    "category": "disaster",
+    "recurrencePattern": "추념일 즈음 밝은 톤의 이벤트·프로모션이 걸리면 날의 의미를 놓쳤다는 비판으로 이어진다.",
+    "severity": 3,
+    "domains": ["business", "creator", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "04-19",
+    "eventName": "4·19 혁명 기념일",
+    "dayType": "anniversary",
+    "category": "history",
+    "recurrencePattern": "민주화 역사를 정파적으로 전유하거나 경시하는 발언이 기념일마다 반복 논란이 된다.",
+    "severity": 2,
+    "domains": ["politics", "media"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "04-20",
+    "eventName": "장애인의 날",
+    "dayType": "anniversary",
+    "category": "minority",
+    "recurrencePattern": "당사자를 시혜·극복 서사의 감동 소재로만 소비하는 캠페인이 매년 당사자성 결여 비판을 부른다.",
+    "severity": 2,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "05-01",
+    "eventName": "근로자의 날(노동절)",
+    "dayType": "anniversary",
+    "category": "labor",
+    "recurrencePattern": "쉬는 직군과 일하는 직군이 갈리는 날, 노동을 가볍게 소재화하거나 무신경한 언급이 반발을 산다.",
+    "severity": 2,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "05-05",
+    "eventName": "어린이날",
+    "dayType": "holiday",
+    "category": "ad",
+    "recurrencePattern": "가정의 달 초입, 아동을 소비 대상으로만 그리는 과열 선물 마케팅이 상업화 부담 비판으로 되돌아온다.",
+    "severity": 2,
+    "domains": ["business", "media"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "05-08",
+    "eventName": "어버이날",
+    "dayType": "anniversary",
+    "category": "minority",
+    "recurrencePattern": "광고가 '정상가족' 틀만 재현해 한부모·비혼·다양한 가족 형태를 배제한다는 지적이 매년 나온다.",
+    "severity": 2,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "05-15",
+    "eventName": "스승의 날",
+    "dayType": "anniversary",
+    "category": "class",
+    "recurrencePattern": "선물·촌지 관행을 미화하거나 청탁금지 기준을 무시한 콘텐츠가 특혜 논란으로 번진다.",
+    "severity": 2,
+    "domains": ["academia", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "05-18",
+    "eventName": "5·18 광주민주화운동 기념일",
+    "dayType": "anniversary",
+    "category": "history",
+    "recurrencePattern": "군사진압을 연상시키는 표현이나 콘셉트를 이 날짜에 얹은 마케팅·발언이 폄훼 논란으로 크게 번진다.",
+    "severity": 3,
+    "domains": ["business", "media", "politics"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "lunar:buddha",
+    "eventName": "부처님오신날",
+    "dayType": "holiday",
+    "category": "religion",
+    "recurrencePattern": "특정 종교 상징을 가볍게 굿즈·밈으로 소비하거나 타 종교와 대비해 조롱하는 콘텐츠가 종교 감수성 논란을 부른다.",
+    "severity": 2,
+    "domains": ["business", "creator", "media"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "06-06",
+    "eventName": "현충일",
+    "dayType": "memorial",
+    "category": "disaster",
+    "recurrencePattern": "추모일에 할인·이벤트 등 경축성 프로모션을 진행하면 곧바로 부적절 논란으로 직결된다.",
+    "severity": 2,
+    "domains": ["business", "creator", "general"],
+    "seasonal": false,
+    "alreadyPublished": true
+  },
+  {
+    "dateKey": "06-10",
+    "eventName": "6·10 민주항쟁 기념일",
+    "dayType": "anniversary",
+    "category": "politics",
+    "recurrencePattern": "민주화 역사를 정파적으로 소환하거나 의미를 축소하는 발언이 기념일마다 진영 논쟁으로 번진다.",
+    "severity": 2,
+    "domains": ["politics", "media"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "06-25",
+    "eventName": "6·25 전쟁 기념일",
+    "dayType": "anniversary",
+    "category": "military",
+    "recurrencePattern": "호국보훈의 달 안보·전쟁 콘텐츠에서 역사 해석이나 표현을 잘못 다루면 이념·안보 논란으로 확대된다.",
+    "severity": 2,
+    "domains": ["politics", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  }
+]

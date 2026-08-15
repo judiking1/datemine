@@ -1,0 +1,134 @@
+[
+  {
+    "dateKey": "lunar:seollal",
+    "eventName": "설날",
+    "dayType": "holiday",
+    "category": "gender",
+    "recurrencePattern": "명절 광고·콘텐츠가 가사·주방 노동을 여성 몫으로 당연시했다가 성차별 재현 논란이 반복된다.",
+    "severity": 3,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": true
+  },
+  {
+    "dateKey": "lunar:seollal",
+    "eventName": "설날",
+    "dayType": "holiday",
+    "category": "generation",
+    "recurrencePattern": "취업·결혼·출산 '명절 잔소리'를 가벼운 웃음 소재로 썼다가 세대 감수성 부족 역풍이 반복된다.",
+    "severity": 2,
+    "domains": ["creator", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": true
+  },
+  {
+    "dateKey": "02-14",
+    "eventName": "밸런타인데이",
+    "dayType": "anniversary",
+    "category": "ad",
+    "recurrencePattern": "기념일 상술·과소비를 부추기는 과장 마케팅이 매년 '상술 피로' 반발과 함께 도마에 오른다.",
+    "severity": 2,
+    "domains": ["business", "creator", "media"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "02-14",
+    "eventName": "밸런타인데이(역사 기억 겹침)",
+    "dayType": "anniversary",
+    "category": "history",
+    "recurrencePattern": "같은 날의 항일 역사 기억일과 겹쳐, 무신경한 축제 톤 마케팅이 '역사 망각' 비판을 부르는 흐름이 반복된다.",
+    "severity": 2,
+    "domains": ["business", "media", "creator"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "02-14",
+    "eventName": "밸런타인 초콜릿(공정무역 이슈)",
+    "dayType": "anniversary",
+    "category": "labor",
+    "recurrencePattern": "초콜릿 원료 생산의 아동노동·불공정 착취가 매년 이맘때 소환되며 무비판적 마케팅이 지적된다.",
+    "severity": 1,
+    "domains": ["business", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "03-01",
+    "eventName": "삼일절",
+    "dayType": "holiday",
+    "category": "nationalism",
+    "recurrencePattern": "국경일 콘텐츠·홍보물에 일본 상징 이미지를 섞었다가 역사 인식 논란으로 사과하는 사례가 반복된다.",
+    "severity": 3,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": true
+  },
+  {
+    "dateKey": "03-01",
+    "eventName": "삼일절",
+    "dayType": "holiday",
+    "category": "history",
+    "recurrencePattern": "반일·역사 감수성이 최고조인 시기에 유명인의 과거 발언·집안 내력이 역으로 검증대에 오르는 흐름이 반복된다.",
+    "severity": 3,
+    "domains": ["general", "entertainment", "politics"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "03-14",
+    "eventName": "화이트데이",
+    "dayType": "anniversary",
+    "category": "ad",
+    "recurrencePattern": "상술로 만들어진 기념일에 과소비를 부추기는 마케팅이 매년 '데이 상술' 피로·반발을 부른다.",
+    "severity": 2,
+    "domains": ["business", "creator", "media"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "03-14",
+    "eventName": "화이트데이",
+    "dayType": "anniversary",
+    "category": "gender",
+    "recurrencePattern": "선물의 성별 의무·부담 구도를 당연시하는 콘텐츠가 젠더 갈등 소재로 소환되는 흐름이 반복된다.",
+    "severity": 1,
+    "domains": ["creator", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "02-20",
+    "eventName": "졸업·입학 시즌",
+    "dayType": "ordinary",
+    "category": "class",
+    "recurrencePattern": "졸업·입학 시즌마다 명문대·학벌 과시 콘텐츠가 학력·계층 위화감 비판을 부르는 흐름이 반복된다.",
+    "severity": 2,
+    "domains": ["academia", "general", "media"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "03-02",
+    "eventName": "대학 개강·새내기 시즌",
+    "dayType": "ordinary",
+    "category": "vice",
+    "recurrencePattern": "신입생 환영·오리엔테이션의 음주 강요 사건·사고가 새 학기마다 되풀이되며 미화 콘텐츠가 역풍을 맞는다.",
+    "severity": 3,
+    "domains": ["academia", "general"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "03-02",
+    "eventName": "대학 개강·새내기 시즌",
+    "dayType": "ordinary",
+    "category": "gapjil",
+    "recurrencePattern": "개강기 선배의 '군기 잡기'·갑질 문화가 매년 공론화되며 이를 가볍게 다룬 콘텐츠가 비판받는다.",
+    "severity": 2,
+    "domains": ["academia", "general"],
+    "seasonal": true,
+    "alreadyPublished": false
+  }
+]

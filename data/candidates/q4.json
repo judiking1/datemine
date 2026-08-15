@@ -1,0 +1,101 @@
+[
+  {
+    "dateKey": "10-03",
+    "eventName": "개천절",
+    "dayType": "holiday",
+    "category": "history",
+    "recurrencePattern": "국가 기원·건국 시점을 둘러싼 해묵은 역사 논쟁이 매년 소환돼, 한쪽으로 단정한 발언·콘텐츠가 양쪽에서 공격받는다",
+    "severity": 2,
+    "domains": ["politics", "media"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "10-09",
+    "eventName": "한글날",
+    "dayType": "holiday",
+    "category": "nationalism",
+    "recurrencePattern": "한글을 기리는 날에 외국어 남용·한글 훼손 표기의 마케팅·문구를 내보냈다가 검수 부재 논란으로 사과하는 사례가 반복된다",
+    "severity": 2,
+    "domains": ["business", "media", "creator"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "10-31",
+    "eventName": "핼러윈",
+    "dayType": "anniversary",
+    "category": "disaster",
+    "recurrencePattern": "대규모 압사 참사 이후 추모 감수성이 커져, 축제·상술 톤의 핼러윈 마케팅이 시의성 결여로 역풍을 맞는 흐름이 이어진다",
+    "severity": 3,
+    "domains": ["business", "creator", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "11-11",
+    "eventName": "빼빼로데이",
+    "dayType": "anniversary",
+    "category": "ad",
+    "recurrencePattern": "과열된 데이 마케팅이 과소비·미성년 타깃 상술 비판을 부르고, 얄팍한 상술 프레임이 매년 되풀이된다",
+    "severity": 2,
+    "domains": ["business", "creator", "foodservice"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "11-19",
+    "eventName": "대학수학능력시험일",
+    "dayType": "anniversary",
+    "category": "class",
+    "recurrencePattern": "수능·사교육·입시 계층 격차가 예민해진 날에 무신경한 응원 마케팅이나 계층 비하성 발언이 반발을 부르는 패턴이 반복된다",
+    "severity": 2,
+    "domains": ["academia", "business", "media"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "11-28",
+    "eventName": "연말 대규모 세일(블랙프라이데이·세일 페스타)",
+    "dayType": "anniversary",
+    "category": "ad",
+    "recurrencePattern": "정가를 올린 뒤 할인율을 부풀리는 위장·허위 할인 논란이 대형 세일 시즌마다 소비자 기만 비판으로 반복된다",
+    "severity": 2,
+    "domains": ["business", "media"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "12-20",
+    "eventName": "연말 회식 시즌",
+    "dayType": "anniversary",
+    "category": "gapjil",
+    "recurrencePattern": "연말 회식 강권·음주 강요·장기자랑 압박과 그 자리의 성희롱 시비가 매년 직장 갑질 사례로 도마에 오른다",
+    "severity": 2,
+    "domains": ["business", "general"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "12-25",
+    "eventName": "크리스마스",
+    "dayType": "holiday",
+    "category": "religion",
+    "recurrencePattern": "종교 상징을 소비적으로 쓰거나 진정성 없는 기부·연말 이벤트를 얹었다가 상술·종교 감수성 논란으로 번지는 사례가 반복된다",
+    "severity": 2,
+    "domains": ["business", "creator", "religionFigure"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "12-27",
+    "eventName": "연말 시상식·결산",
+    "dayType": "anniversary",
+    "category": "pastScandal",
+    "recurrencePattern": "연말 시상·결산 시즌에 수상·출연 인물의 과거 논란이 소환되며 자격 시비와 공정성 비판이 매년 되풀이된다",
+    "severity": 2,
+    "domains": ["entertainment", "media"],
+    "seasonal": true,
+    "alreadyPublished": false
+  }
+]
