@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.turbo/
+coverage/
+*.tsbuildinfo
+.expo/
+.DS_Store
+.env
+.env.*
+
+# Layer 1 (raw, real-name) data must never be committed.
+# Internal ingest data stays out of version control.
+/data/raw/
+*.raw.json
