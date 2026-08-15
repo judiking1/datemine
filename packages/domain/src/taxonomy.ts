@@ -27,6 +27,13 @@ export const RISK_CATEGORY = {
   ad: "허위·과장·뒷광고",
   nationalism: "국뽕·애국 마케팅",
   looseTalk: "막말·실언",
+  gapjil: "갑질·권력남용",
+  tax: "세금·탈세",
+  fraud: "사기·투자 리스크",
+  regionalism: "지역감정",
+  appearance: "외모·비하",
+  honesty: "거짓말·도덕성",
+  romance: "열애·불륜 논란",
 } as const;
 
 export type RiskCategory = keyof typeof RISK_CATEGORY;
@@ -39,6 +46,15 @@ export const PERSONA_DOMAIN = {
   tech: "IT·테크",
   media: "방송·언론",
   creator: "인플루언서·크리에이터",
+  gaming: "게임·e스포츠",
+  webtoon: "웹툰·웹소설",
+  foodservice: "요식업·셰프",
+  fashion: "패션·뷰티",
+  academia: "교육·학계",
+  medical: "의료·과학",
+  legal: "법조",
+  religionFigure: "종교인",
+  artist: "문화·예술",
   general: "전방위",
 } as const;
 
