@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { getDailyContext } from "./src/getToday";
+import { ReferenceList } from "./src/ReferenceList";
 import { theme } from "./src/theme";
 import { TodayCard } from "./src/TodayCard";
 
@@ -20,6 +21,7 @@ export default function App(): React.JSX.Element {
             <Text style={styles.tagline}>오늘, 무슨 말은 참아야 할까</Text>
           </View>
           <TodayCard context={context} />
+          <ReferenceList />
           <Text style={styles.footer}>
             공개 보도로 반복 확인된 유형을 익명화한 자료입니다. 특정 개인·단체를 지목하지
             않습니다.
