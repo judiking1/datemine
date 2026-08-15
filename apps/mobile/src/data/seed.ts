@@ -8,6 +8,42 @@ import type { CalendarData, DailyContext } from "@datemine/domain";
  * Keyed by "MM-DD" because these are recurring annual events.
  */
 export const seedCardsByMonthDay: Readonly<Record<string, Omit<DailyContext, "date">>> = {
+  "03-01": {
+    dayType: "holiday",
+    significance: "삼일절. 독립운동 정신을 기리는 국경일. 반일·역사 감수성이 가장 예민한 날.",
+    advice: "국경일 콘텐츠에 일본풍 이미지 섞지 마라. 벚꽃·후지산 한 컷이 역사 인식 논란을 부른다.",
+    riskPatterns: [
+      {
+        pattern: "국경일 콘텐츠·홍보물에 일본 상징물 배치",
+        whyItBackfires:
+          "삼일절·광복절엔 대중의 역사 감수성이 최고조다. 후지산·벚꽃·기모노 등이 국경일 옆에 놓이면 검수 부재로 읽힌다.",
+        exampleSummary:
+          "한 기관의 홍보물이 국경일 지면에 일본 상징 이미지를 배치했다가 역사 인식 논란으로 사과한 사례가 반복됐다.",
+        severity: 3,
+        category: "nationalism",
+        domains: ["business", "media", "general"],
+      },
+    ],
+    reviewedAt: "2026-08-16T00:00:00Z",
+  },
+  "06-06": {
+    dayType: "memorial",
+    significance: "현충일. 순국선열·전몰장병을 추모하는 날. 추모 분위기를 존중해야 한다.",
+    advice: "오늘은 할인·이벤트·밝은 프로모션 자제. 추모일에 축제 톤은 곧바로 역풍이다.",
+    riskPatterns: [
+      {
+        pattern: "추모일에 할인·이벤트·경축성 프로모션 진행",
+        whyItBackfires:
+          "추모일의 대중 정서는 엄숙이다. 상업적 축제 톤은 '날의 의미를 모른다'는 비판으로 직결된다.",
+        exampleSummary:
+          "추모일에 밝은 톤의 프로모션·이벤트를 진행했다가 부적절 논란으로 게시물을 내린 사례가 반복됐다.",
+        severity: 2,
+        category: "disaster",
+        domains: ["business", "creator", "general"],
+      },
+    ],
+    reviewedAt: "2026-08-16T00:00:00Z",
+  },
   "08-15": {
     dayType: "holiday",
     significance: "1945년 광복. 매년 이맘때 가문·집안 내력을 자랑하다 친일 이력이 검증대에 오른다.",
@@ -22,6 +58,16 @@ export const seedCardsByMonthDay: Readonly<Record<string, Omit<DailyContext, "da
         severity: 3,
         category: "history",
         domains: ["general", "entertainment", "politics"],
+      },
+      {
+        pattern: "국경일 마케팅에 일본풍 콘셉트·상징 사용",
+        whyItBackfires:
+          "광복절엔 반일 정서가 강해진다. 일본풍 이벤트·의상·상징은 시의성 검수 실패로 비친다.",
+        exampleSummary:
+          "광복절 시기 일본풍 콘셉트의 행사·게시물이 부적절 논란으로 번진 사례가 반복됐다.",
+        severity: 2,
+        category: "nationalism",
+        domains: ["business", "creator", "media"],
       },
     ],
     reviewedAt: "2026-08-10T00:00:00Z",
@@ -49,6 +95,20 @@ export const seedCardsByMonthDay: Readonly<Record<string, Omit<DailyContext, "da
 /** Calendar backbone for the daily-content guarantee (fallback when no card exists). */
 export const seedCalendar: CalendarData = {
   fixedEvents: [
+    {
+      month: 3,
+      day: 1,
+      dayType: "holiday",
+      name: "삼일절",
+      significance: "1919년 3·1 독립운동을 기리는 국경일.",
+    },
+    {
+      month: 6,
+      day: 6,
+      dayType: "memorial",
+      name: "현충일",
+      significance: "순국선열과 전몰장병을 추모하는 날.",
+    },
     {
       month: 8,
       day: 15,

@@ -1,0 +1,19 @@
+#!/bin/sh
+# datemine pre-commit gates. Fast — the repo is small and kept clean.
+# The boundary check is first: it is the legal safety net (no client code may
+# reach the raw/Layer-1 layer). Bypass in emergencies with: git commit --no-verify
+set -e
+
+echo "[pre-commit] layer boundary (raw layer must not reach client)…"
+pnpm --silent check:boundaries
+
+echo "[pre-commit] typecheck…"
+pnpm --silent typecheck
+
+echo "[pre-commit] lint…"
+pnpm --silent lint
+
+echo "[pre-commit] tests…"
+pnpm --silent test
+
+echo "[pre-commit] all gates passed."
