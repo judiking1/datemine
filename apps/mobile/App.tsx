@@ -15,9 +15,15 @@ export default function App(): React.JSX.Element {
       <SafeAreaView style={styles.safe}>
         <StatusBar style="light" />
         <ScrollView contentContainerStyle={styles.scroll}>
-          <Text style={styles.brand}>datemine</Text>
-          <Text style={styles.tagline}>오늘, 무슨 말은 참아야 할까</Text>
+          <View style={styles.header}>
+            <Text style={styles.brand}>datemine</Text>
+            <Text style={styles.tagline}>오늘, 무슨 말은 참아야 할까</Text>
+          </View>
           <TodayCard context={context} />
+          <Text style={styles.footer}>
+            공개 보도로 반복 확인된 유형을 익명화한 자료입니다. 특정 개인·단체를 지목하지
+            않습니다.
+          </Text>
         </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
@@ -33,6 +39,10 @@ const styles = StyleSheet.create({
     padding: theme.space.lg,
     gap: theme.space.md,
   },
+  header: {
+    gap: theme.space.xs,
+    marginBottom: theme.space.sm,
+  },
   brand: {
     color: theme.color.accent,
     fontSize: theme.font.heading,
@@ -42,6 +52,12 @@ const styles = StyleSheet.create({
   tagline: {
     color: theme.color.textMuted,
     fontSize: theme.font.body,
-    marginBottom: theme.space.sm,
+  },
+  footer: {
+    color: theme.color.textMuted,
+    fontSize: theme.font.caption,
+    lineHeight: 18,
+    opacity: 0.7,
+    marginTop: theme.space.sm,
   },
 });

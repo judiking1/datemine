@@ -27,9 +27,14 @@ export const theme = {
   },
 } as const;
 
-/** Severity → accent intensity label + color. */
+/** Severity → color + short Korean label, so intensity reads without relying on color alone. */
+export function severityMeta(severity: 1 | 2 | 3): { color: string; label: string } {
+  if (severity >= 3) return { color: "#FF4D4D", label: "위험" };
+  if (severity === 2) return { color: "#FF9F45", label: "주의" };
+  return { color: "#FFD166", label: "유의" };
+}
+
+/** Back-compat: color only. */
 export function severityColor(severity: 1 | 2 | 3): string {
-  if (severity >= 3) return "#FF4D4D";
-  if (severity === 2) return "#FF9F45";
-  return "#FFD166";
+  return severityMeta(severity).color;
 }
