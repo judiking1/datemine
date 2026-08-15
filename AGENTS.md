@@ -7,7 +7,8 @@
 2. `docs/ARCHITECTURE.md` — 모노레포 구조·도메인 타입·계층 경계
 3. `docs/DECISIONS.md` — 스택·기능 결정 로그(왜 그렇게 정했나)
 4. `docs/CONVENTIONS.md` — 코딩 컨벤션·스타일(도구가 강제 + 사람 판단)
-5. 이 문서(`AGENTS.md`) — 작업 규칙과 하드 게이트
+5. `docs/DATA-PIPELINE.md` — 데이터 수집·발행 파이프라인·2축 taxonomy·커버리지 모델
+6. 이 문서(`AGENTS.md`) — 작업 규칙과 하드 게이트
 
 ## 제품 한 줄
 매일 아침, 오늘이 무슨 날이고 어떤 발언·행동이 지뢰인지 세게 알려주는 경각심 캘린더 앱.

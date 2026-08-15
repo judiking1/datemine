@@ -13,6 +13,8 @@ export type DayType =
   | "solarTerm"
   | "ordinary";
 
+import type { PersonaDomain, RiskCategory } from "./taxonomy";
+
 export type Severity = 1 | 2 | 3;
 
 export interface RiskPattern {
@@ -23,6 +25,10 @@ export interface RiskPattern {
   /** Anonymized case summary — no names, no identifying details. */
   readonly exampleSummary: string;
   readonly severity: Severity;
+  /** Axis A tag (docs/DATA-PIPELINE.md). Optional until content is fully tagged. */
+  readonly category?: RiskCategory;
+  /** Axis B tags — which personas this applies to (for later personalization). */
+  readonly domains?: readonly PersonaDomain[];
 }
 
 export interface DailyContext {

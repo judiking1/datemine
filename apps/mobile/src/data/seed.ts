@@ -20,6 +20,8 @@ export const seedCardsByMonthDay: Readonly<Record<string, Omit<DailyContext, "da
         exampleSummary:
           "한 방송 출연자가 명문가 내력을 자랑했다가 선대의 친일 행적이 드러나 여론이 악화된 사례가 반복됐다.",
         severity: 3,
+        category: "history",
+        domains: ["general", "entertainment", "politics"],
       },
     ],
     reviewedAt: "2026-08-10T00:00:00Z",
@@ -36,6 +38,8 @@ export const seedCardsByMonthDay: Readonly<Record<string, Omit<DailyContext, "da
         exampleSummary:
           "복날 즈음 식문화를 단정적으로 비하한 발언이 광범위한 반발을 부른 사례가 반복됐다.",
         severity: 2,
+        category: "food",
+        domains: ["creator", "entertainment"],
       },
     ],
     reviewedAt: "2026-07-10T00:00:00Z",
