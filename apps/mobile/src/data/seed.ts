@@ -26,6 +26,25 @@ export const seedCardsByMonthDay: Readonly<Record<string, Omit<DailyContext, "da
     ],
     reviewedAt: "2026-08-16T00:00:00Z",
   },
+  "04-01": {
+    dayType: "anniversary",
+    significance: "만우절. 장난·거짓 콘셉트 마케팅이 쏟아지는 날. 시국을 잘못 읽으면 바로 역풍.",
+    advice:
+      "장난은 치되 민감 시국엔 접어라. 재난·참사·감염병 국면의 만우절 농담은 조롱으로 읽힌다.",
+    riskPatterns: [
+      {
+        pattern: "민감 시국에 강행하는 거짓말·장난성 마케팅",
+        whyItBackfires:
+          "만우절 장난은 평시엔 재치지만, 재난·추모·감염병 국면에선 '분위기 파악 실패'로 뒤집힌다. SNS 게시물은 뒤늦게 지워도 박제된다.",
+        exampleSummary:
+          "민감한 시기에 강행한 장난성 공지·이벤트가 부적절 논란으로 사과·철회된 사례가 반복됐다.",
+        severity: 2,
+        category: "ad",
+        domains: ["business", "creator", "media"],
+      },
+    ],
+    reviewedAt: "2026-08-16T00:00:00Z",
+  },
   "06-06": {
     dayType: "memorial",
     significance: "현충일. 순국선열·전몰장병을 추모하는 날. 추모 분위기를 존중해야 한다.",
@@ -101,6 +120,13 @@ export const seedCalendar: CalendarData = {
       dayType: "holiday",
       name: "삼일절",
       significance: "1919년 3·1 독립운동을 기리는 국경일.",
+    },
+    {
+      month: 4,
+      day: 1,
+      dayType: "anniversary",
+      name: "만우절",
+      significance: "장난·거짓 콘셉트가 쏟아지는 날.",
     },
     {
       month: 6,
