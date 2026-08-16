@@ -1,5 +1,5 @@
 import type { DayType, RiskCategory, RiskPattern, Severity } from "@datemine/domain";
-import { seedCardsByLunarKey, seedCardsByMonthDay } from "./data/seed";
+import { seedCalendar, seedCardsByLunarKey, seedCardsByMonthDay } from "./data/seed";
 
 /** One row in the reference calendar: a published high-signal day. */
 export type ReferenceEntry = {
@@ -56,4 +56,22 @@ export function referenceEntries(): ReferenceEntry[] {
 
   fixed.sort((a, b) => a.key.localeCompare(b.key));
   return [...fixed, ...lunar];
+}
+
+/**
+ * Resolve a reference entry to an ISO date in the given year so the UI can jump to it.
+ * Fixed "MM-DD" keys map directly; lunar keys look up that year's solar date in the
+ * calendar (returns undefined if that year isn't seeded yet).
+ */
+export function resolveEntryDate(entry: ReferenceEntry, year: number): string | undefined {
+  if (!entry.key.startsWith("lunar:")) {
+    return `${year}-${entry.key}`;
+  }
+  const lunarKey = entry.key.slice("lunar:".length);
+  const yearMap = seedCalendar.lunarHolidaysByYear[year];
+  if (!yearMap) return undefined;
+  for (const [isoDate, holiday] of Object.entries(yearMap)) {
+    if (holiday.lunarKey === lunarKey) return isoDate;
+  }
+  return undefined;
 }

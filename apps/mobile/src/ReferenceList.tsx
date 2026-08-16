@@ -1,14 +1,22 @@
 import { type RiskCategory, riskCategoryLabel } from "@datemine/domain";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { severityMeta, theme } from "./theme";
-import { type ReferenceEntry, referenceEntries } from "./upcoming";
+import { type ReferenceEntry, referenceEntries, resolveEntryDate } from "./upcoming";
 
-function Row({ entry }: { entry: ReferenceEntry }): React.JSX.Element {
+function Row({
+  entry,
+  onSelect,
+}: {
+  entry: ReferenceEntry;
+  onSelect?: ((isoDate: string) => void) | undefined;
+}): React.JSX.Element {
   const sev = severityMeta(entry.topSeverity);
   const cats = entry.categories.map((c: RiskCategory) => riskCategoryLabel(c)).join(" · ");
+  const target = resolveEntryDate(entry, new Date().getFullYear());
+  const jump = onSelect && target ? () => onSelect(target) : undefined;
 
   return (
-    <View style={[styles.row, { borderLeftColor: sev.color }]}>
+    <Pressable style={[styles.row, { borderLeftColor: sev.color }]} onPress={jump} disabled={!jump}>
       <View style={styles.rowTop}>
         <Text style={styles.date}>{entry.label}</Text>
         <View style={[styles.sevDot, { backgroundColor: sev.color }]} />
@@ -17,12 +25,16 @@ function Row({ entry }: { entry: ReferenceEntry }): React.JSX.Element {
         {entry.significance}
       </Text>
       {cats.length > 0 && <Text style={styles.cats}>{cats}</Text>}
-    </View>
+    </Pressable>
   );
 }
 
 /** Reference almanac: every published (reviewed) high-signal day, in calendar order. */
-export function ReferenceList(): React.JSX.Element {
+export function ReferenceList({
+  onSelect,
+}: {
+  onSelect?: (isoDate: string) => void;
+}): React.JSX.Element {
   const entries = referenceEntries();
 
   return (
@@ -32,7 +44,7 @@ export function ReferenceList(): React.JSX.Element {
         <Text style={styles.sectionCount}>{entries.length}</Text>
       </View>
       {entries.map((entry) => (
-        <Row key={entry.key} entry={entry} />
+        <Row key={entry.key} entry={entry} onSelect={onSelect} />
       ))}
     </View>
   );
