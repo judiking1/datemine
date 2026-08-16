@@ -63,6 +63,16 @@ export function referenceEntries(): ReferenceEntry[] {
  * Fixed "MM-DD" keys map directly; lunar keys look up that year's solar date in the
  * calendar (returns undefined if that year isn't seeded yet).
  */
+/** ISO dates (for the given year) that have a published card — used to light up the calendar. */
+export function publishedIsoDates(year: number): Set<string> {
+  const set = new Set<string>();
+  for (const entry of referenceEntries()) {
+    const iso = resolveEntryDate(entry, year);
+    if (iso) set.add(iso);
+  }
+  return set;
+}
+
 export function resolveEntryDate(entry: ReferenceEntry, year: number): string | undefined {
   if (!entry.key.startsWith("lunar:")) {
     return `${year}-${entry.key}`;

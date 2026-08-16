@@ -1,8 +1,9 @@
 import { toIsoDate } from "@datemine/domain";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { Calendar } from "./src/Calendar";
 import { DateNav } from "./src/DateNav";
 import { getDailyContext } from "./src/getToday";
 import { ReferenceList } from "./src/ReferenceList";
@@ -11,7 +12,13 @@ import { TodayCard } from "./src/TodayCard";
 
 export default function App(): React.JSX.Element {
   const [selectedDate, setSelectedDate] = useState(() => toIsoDate(new Date()));
+  const [showCalendar, setShowCalendar] = useState(false);
   const context = getDailyContext(selectedDate);
+
+  const pick = (isoDate: string) => {
+    setSelectedDate(isoDate);
+    setShowCalendar(false);
+  };
 
   return (
     <SafeAreaProvider>
@@ -23,6 +30,15 @@ export default function App(): React.JSX.Element {
             <Text style={styles.tagline}>오늘, 무슨 말은 참아야 할까</Text>
           </View>
           <DateNav date={selectedDate} onChange={setSelectedDate} />
+          <Pressable
+            style={styles.calToggle}
+            onPress={() => setShowCalendar((v) => !v)}
+          >
+            <Text style={styles.calToggleText}>
+              {showCalendar ? "달력 닫기 ▲" : "달력으로 날짜 고르기 ▾"}
+            </Text>
+          </Pressable>
+          {showCalendar && <Calendar selected={selectedDate} onSelect={pick} />}
           <TodayCard context={context} />
           <ReferenceList onSelect={setSelectedDate} />
           <Text style={styles.footer}>
@@ -57,6 +73,15 @@ const styles = StyleSheet.create({
   tagline: {
     color: theme.color.textMuted,
     fontSize: theme.font.body,
+  },
+  calToggle: {
+    alignItems: "center",
+    paddingVertical: theme.space.xs,
+  },
+  calToggleText: {
+    color: theme.color.accent,
+    fontSize: theme.font.caption,
+    fontWeight: "700",
   },
   footer: {
     color: theme.color.textMuted,
