@@ -11,7 +11,8 @@
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "lint": "turbo run lint",
-    "check:boundaries": "node scripts/check-boundaries.mjs"
+    "check:boundaries": "node scripts/check-boundaries.mjs",
+    "check:drafts": "node scripts/check-drafts.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",

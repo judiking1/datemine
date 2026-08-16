@@ -16,4 +16,7 @@ pnpm --silent lint
 echo "[pre-commit] tests…"
 pnpm --silent test
 
+echo "[pre-commit] draft staging schema…"
+pnpm --silent check:drafts
+
 echo "[pre-commit] all gates passed."
