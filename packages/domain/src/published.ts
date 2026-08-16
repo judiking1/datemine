@@ -37,6 +37,8 @@ export interface DailyContext {
   /** Optional lunar date label. */
   readonly lunar?: string;
   readonly dayType: DayType;
+  /** Punchy one-line headline — the phrase that sticks at a glance (제품 정체성). */
+  readonly hook?: string;
   /** Educational meaning of the day. */
   readonly significance: string;
   readonly riskPatterns: readonly RiskPattern[];

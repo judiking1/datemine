@@ -1,4 +1,5 @@
 import { type DailyContext, resolveDay } from "@datemine/domain";
+import { hooksByKey } from "./data/hooks";
 import { MERGE_KEYS, promotedByLunarKey, promotedByMonthDay } from "./data/published";
 import { seedCalendar, seedCardsByLunarKey, seedCardsByMonthDay } from "./data/seed";
 
@@ -31,7 +32,8 @@ export function getDailyContext(isoDate: string): DailyContext {
   const md = monthDay(isoDate);
   const card = combine(seedCardsByMonthDay[md], promotedByMonthDay[md], md);
   if (card) {
-    return { date: isoDate, ...card };
+    const hook = hooksByKey[md];
+    return { date: isoDate, ...(hook ? { hook } : {}), ...card };
   }
 
   const entry = resolveDay(isoDate, seedCalendar);
@@ -43,7 +45,8 @@ export function getDailyContext(isoDate: string): DailyContext {
       `lunar:${entry.lunarKey}`,
     );
     if (lunarCard) {
-      return { date: isoDate, ...lunarCard };
+      const hook = hooksByKey[`lunar:${entry.lunarKey}`];
+      return { date: isoDate, ...(hook ? { hook } : {}), ...lunarCard };
     }
   }
 

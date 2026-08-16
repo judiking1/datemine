@@ -54,8 +54,12 @@ export function TodayCard({ context }: { context: DailyContext }): React.JSX.Ele
         </View>
       </View>
 
-      {hasRisks && <Text style={styles.adviceLabel}>종합 충고</Text>}
-      <Text style={styles.advice}>{context.advice}</Text>
+      {context.hook ? (
+        <Text style={styles.hook}>{context.hook}</Text>
+      ) : (
+        hasRisks && <Text style={styles.adviceLabel}>종합 충고</Text>
+      )}
+      <Text style={context.hook ? styles.adviceUnderHook : styles.advice}>{context.advice}</Text>
       <Text style={styles.significance}>{context.significance}</Text>
 
       {hasRisks && (
@@ -143,11 +147,24 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     letterSpacing: 1,
   },
+  hook: {
+    color: theme.color.text,
+    fontSize: 28,
+    fontWeight: "800",
+    lineHeight: 36,
+    letterSpacing: -0.3,
+  },
   advice: {
     color: theme.color.text,
     fontSize: theme.font.title,
     fontWeight: "700",
     lineHeight: 34,
+  },
+  adviceUnderHook: {
+    color: theme.color.textMuted,
+    fontSize: theme.font.body,
+    fontWeight: "600",
+    lineHeight: 22,
   },
   significance: {
     color: theme.color.textMuted,
