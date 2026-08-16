@@ -40,8 +40,9 @@ nationalism), 7/17 초복(food), 설날·추석 명절(gender+generation, lunarK
 - **스테이징**: `data/drafts/*.json`(앱 미연결) → 검수 → `seed.ts` 승격. `data/drafts/README.md`.
 - **검증 게이트**: `pnpm check:drafts`(스키마·taxonomy·`reviewedAt` 금지·URL유출) → pre-commit 포함.
 - **진행률**: `pnpm progress`(후보 대비 초안·발행 %, 검수 대기 목록).
-- **초안 배치**: sev3 6셀 커밋됨(`data/drafts/`): 03-01(merge), 03-02, 04-16, 05-18, 08-14, 10-31.
-  sev2 상업/문화 8셀 수집 진행 중(밸런타인·화이트데이·어린이날·어버이날·한글날·빼빼로·크리스마스·중복).
+- **검수 페이지**: `node scripts/review-drafts.mjs` → `review-drafts.html`(gitignore). 카드+메모 렌더.
+- **초안 28일치 커밋됨**(검수 대기): 후보 37일 중 75.7%. sev3/추모/정치/상업/시즌 전 카테고리 커버.
+- **UI**: 카테고리 그룹 카드 + 종합충고 + 레퍼런스 목록 + 날짜 네비(이전/다음·오늘·탭점프).
 
 ## ⚠️ 소유자 검수 대기 (승격 = 앱 노출)
 `data/drafts/`의 초안을 톤·사실·개인특정 확인 후 `reviewedAt` 부여 → `seed.ts`로 이동 → 초안 삭제.
