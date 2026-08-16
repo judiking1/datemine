@@ -12,3 +12,6 @@ coverage/
 # Internal ingest data stays out of version control.
 /data/raw/
 *.raw.json
+
+# Generated review page
+/review-drafts.html
