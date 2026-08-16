@@ -36,7 +36,14 @@ nationalism), 7/17 초복(food), 설날·추석 명절(gender+generation, lunarK
 오늘 카드(심각도/카테고리 칩·요일·엠프티) → **레퍼런스 목록**(`ReferenceList`/`upcoming.ts`,
 발행 카드 연표) → 면책 푸터. `.claude/launch.json`의 `mobile-web`로 프리뷰.
 
-## Phase 2 파이프라인 (구축됨, 2026-08-16)
+## 일괄 발행 완료 (2026-08-16, 소유자 결정)
+- 초안 28일치를 **전부 승격**(`scripts/promote-all.mjs` → `apps/mobile/src/data/published.ts`).
+  reviewedAt 일괄 스탬프. **발행 34일치(후보의 91.9%).** 검수는 발행 후 하루씩 진행 예정.
+- `published.ts`가 이제 **정식 발행 저장소**(1회 생성 후 손편집 가능). `data/drafts/`·초안 프리뷰·
+  검수모드·레퍼런스 목록은 제거됨. 03-01은 seed 카드에 promoted 패턴 append(런타임 병합).
+- **UI**: 달력=팝오버(중앙 날짜 탭), 오늘로=헤더 버튼, 날짜 이전/다음 화살표.
+
+## (구) Phase 2 파이프라인
 - **스테이징**: `data/drafts/*.json`(앱 미연결) → 검수 → `seed.ts` 승격. `data/drafts/README.md`.
 - **검증 게이트**: `pnpm check:drafts`(스키마·taxonomy·`reviewedAt` 금지·URL유출) → pre-commit 포함.
 - **진행률**: `pnpm progress`(후보 대비 초안·발행 %, 검수 대기 목록).

@@ -19,13 +19,12 @@ function label(isoDate: string): string {
 export function DateNav({
   date,
   onChange,
+  onOpenCalendar,
 }: {
   date: string;
   onChange: (isoDate: string) => void;
+  onOpenCalendar: () => void;
 }): React.JSX.Element {
-  const today = toIsoDate(new Date());
-  const isToday = date === today;
-
   return (
     <View style={styles.row}>
       <Pressable
@@ -36,9 +35,9 @@ export function DateNav({
         <Text style={styles.arrowText}>‹</Text>
       </Pressable>
 
-      <Pressable style={styles.center} onPress={() => onChange(today)} disabled={isToday}>
+      <Pressable style={styles.center} onPress={onOpenCalendar} accessibilityLabel="달력 열기">
         <Text style={styles.date}>{label(date)}</Text>
-        {!isToday && <Text style={styles.reset}>오늘로</Text>}
+        <Text style={styles.hint}>달력 ▾</Text>
       </Pressable>
 
       <Pressable
@@ -80,16 +79,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    gap: 2,
+    gap: 1,
   },
   date: {
     color: theme.color.text,
     fontSize: theme.font.body,
     fontWeight: "700",
   },
-  reset: {
+  hint: {
     color: theme.color.accent,
     fontSize: theme.font.caption,
-    fontWeight: "700",
+    fontWeight: "600",
   },
 });

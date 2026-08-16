@@ -52,7 +52,18 @@ const lunarSection = seed.slice(seed.indexOf("seedCardsByLunarKey"));
 const publishedLunar = [...lunarSection.matchAll(/^\s{2}([a-zA-Z][a-zA-Z0-9]*):\s*lunarFamilyCard/gm)].map(
   (m) => `lunar:${m[1]}`,
 );
-const publishedDays = new Set([...publishedFixed, ...publishedLunar]);
+
+// Promoted cards live in apps/mobile/src/data/published.ts (generated, then hand-edited).
+let promotedFixed = [];
+try {
+  const pub = readFileSync(join(ROOT, "apps", "mobile", "src", "data", "published.ts"), "utf8");
+  const section = pub.slice(pub.indexOf("promotedByMonthDay"), pub.indexOf("promotedByLunarKey"));
+  promotedFixed = [...section.matchAll(/^\s{2}"(\d{2}-\d{2})":/gm)].map((m) => m[1]);
+} catch {
+  // no promoted store yet
+}
+
+const publishedDays = new Set([...publishedFixed, ...publishedLunar, ...promotedFixed]);
 
 function bar(n, total, width = 24) {
   const filled = total === 0 ? 0 : Math.round((n / total) * width);

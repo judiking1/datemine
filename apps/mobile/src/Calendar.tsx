@@ -2,7 +2,7 @@ import { toIsoDate } from "@datemine/domain";
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { theme } from "./theme";
-import { draftIsoDates, publishedIsoDates } from "./upcoming";
+import { publishedIsoDates } from "./upcoming";
 
 const WEEK_LABELS = ["일", "월", "화", "수", "목", "금", "토"] as const;
 
@@ -29,11 +29,9 @@ function monthCells(year: number, month0: number): { key: string; iso: string | 
 export function Calendar({
   selected,
   onSelect,
-  reviewMode = false,
 }: {
   selected: string;
   onSelect: (isoDate: string) => void;
-  reviewMode?: boolean;
 }): React.JSX.Element {
   const [view, setView] = useState(() => ({
     year: Number(selected.slice(0, 4)),
@@ -41,7 +39,6 @@ export function Calendar({
   }));
   const today = toIsoDate(new Date());
   const published = publishedIsoDates(view.year);
-  const drafts = reviewMode ? draftIsoDates(view.year) : new Set<string>();
   const cells = monthCells(view.year, view.month0);
 
   const stepMonth = (delta: number) => {
@@ -76,7 +73,6 @@ export function Calendar({
           if (!iso) return <View key={key} style={styles.cell} />;
           const day = Number(iso.slice(8));
           const isPublished = published.has(iso);
-          const isDraft = !isPublished && drafts.has(iso);
           const isSelected = iso === selected;
           const isToday = iso === today;
           return (
@@ -86,7 +82,6 @@ export function Calendar({
                 styles.cell,
                 styles.dayCell,
                 isPublished && styles.published,
-                isDraft && styles.draft,
                 isSelected && styles.selected,
               ]}
               onPress={() => onSelect(iso)}
@@ -94,7 +89,7 @@ export function Calendar({
               <Text
                 style={[
                   styles.dayText,
-                  (isPublished || isDraft) && styles.dataText,
+                  isPublished && styles.dataText,
                   isToday && styles.todayText,
                 ]}
               >
@@ -108,15 +103,7 @@ export function Calendar({
 
       <View style={styles.legendRow}>
         <View style={[styles.legendDot, { backgroundColor: theme.color.accent }]} />
-        <Text style={styles.legend}>발행됨</Text>
-        {reviewMode && (
-          <>
-            <View style={[styles.legendDot, { backgroundColor: "#FFD166" }]} />
-            <Text style={styles.legend}>검수 대기</Text>
-          </>
-        )}
-        <View style={[styles.legendRing]} />
-        <Text style={styles.legend}>선택/오늘</Text>
+        <Text style={styles.legend}>조심할 데이터가 있는 날</Text>
       </View>
     </View>
   );
@@ -162,10 +149,9 @@ const styles = StyleSheet.create({
   },
   dayCell: { borderRadius: theme.radius.md, borderWidth: 2, borderColor: "transparent" },
   dayText: { color: theme.color.textMuted, fontSize: theme.font.body },
-  // Data days: solid fills so they clearly stand out from empty days.
+  // Data days: solid fill so they clearly stand out from empty days.
   published: { backgroundColor: theme.color.accent },
-  draft: { backgroundColor: "#4A3B12" },
-  // Selection/today: border only, so it never masquerades as a data day.
+  // Selection: border only, so it never masquerades as a data day.
   selected: { borderColor: theme.color.text },
   dataText: { color: theme.color.text, fontWeight: "800" },
   todayText: { textDecorationLine: "underline" },

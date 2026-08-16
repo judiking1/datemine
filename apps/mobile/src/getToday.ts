@@ -1,30 +1,35 @@
 import { type DailyContext, resolveDay } from "@datemine/domain";
-import { draftCardsByLunarKey, draftCardsByMonthDay } from "./data/draftsPreview.generated";
+import { MERGE_KEYS, promotedByLunarKey, promotedByMonthDay } from "./data/published";
 import { seedCalendar, seedCardsByLunarKey, seedCardsByMonthDay } from "./data/seed";
+
+type Card = Omit<DailyContext, "date">;
 
 function monthDay(isoDate: string): string {
   const [, month, day] = isoDate.split("-");
   return `${month}-${day}`;
 }
 
-/**
- * Resolve a day's DailyContext. Priority: fixed-date card → lunar-holiday card (matched
- * via the year's resolved lunarKey) → non-empty calendar fallback, so the app never shows
- * an empty day (see the daily-content guarantee).
- *
- * When `includeDrafts` is true (검수 모드), unreviewed draft cards take precedence so the
- * owner can review them in-app. Drafts carry no `reviewedAt`, so isPublishable() stays
- * false and the UI badges them 미발행 — they never leak into the default (published) view.
- */
-export function getDailyContext(isoDate: string, includeDrafts = false): DailyContext {
-  if (includeDrafts) {
-    const draft = draftCardsByMonthDay[monthDay(isoDate)];
-    if (draft) {
-      return { date: isoDate, ...draft };
-    }
+/** Combine a hand-written seed card with a promoted one. MERGE_KEYS append their risk
+ * patterns onto the seed card; otherwise the promoted card stands alone. */
+function combine(
+  seed: Card | undefined,
+  promoted: Card | undefined,
+  key: string,
+): Card | undefined {
+  if (seed && promoted && MERGE_KEYS.includes(key)) {
+    return { ...seed, riskPatterns: [...seed.riskPatterns, ...promoted.riskPatterns] };
   }
+  return promoted ?? seed;
+}
 
-  const card = seedCardsByMonthDay[monthDay(isoDate)];
+/**
+ * Resolve a day's DailyContext. Priority: fixed-date card (seed + promoted) → lunar-holiday
+ * card → non-empty calendar fallback, so the app never shows an empty day (see the
+ * daily-content guarantee).
+ */
+export function getDailyContext(isoDate: string): DailyContext {
+  const md = monthDay(isoDate);
+  const card = combine(seedCardsByMonthDay[md], promotedByMonthDay[md], md);
   if (card) {
     return { date: isoDate, ...card };
   }
@@ -32,13 +37,11 @@ export function getDailyContext(isoDate: string, includeDrafts = false): DailyCo
   const entry = resolveDay(isoDate, seedCalendar);
 
   if (entry.lunarKey) {
-    if (includeDrafts) {
-      const draftLunar = draftCardsByLunarKey[entry.lunarKey];
-      if (draftLunar) {
-        return { date: isoDate, ...draftLunar };
-      }
-    }
-    const lunarCard = seedCardsByLunarKey[entry.lunarKey];
+    const lunarCard = combine(
+      seedCardsByLunarKey[entry.lunarKey],
+      promotedByLunarKey[entry.lunarKey],
+      `lunar:${entry.lunarKey}`,
+    );
     if (lunarCard) {
       return { date: isoDate, ...lunarCard };
     }

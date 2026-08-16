@@ -1,5 +1,5 @@
 import type { DayType, RiskCategory, RiskPattern, Severity } from "@datemine/domain";
-import { draftCardsByLunarKey, draftCardsByMonthDay } from "./data/draftsPreview.generated";
+import { promotedByLunarKey, promotedByMonthDay } from "./data/published";
 import { seedCalendar, seedCardsByLunarKey, seedCardsByMonthDay } from "./data/seed";
 
 /** One row in the reference calendar: a published high-signal day. */
@@ -18,11 +18,11 @@ const LUNAR_LABEL: Record<string, string> = {
   chuseok: "추석",
 };
 
-function summarize(card: {
-  dayType: DayType;
-  significance: string;
-  riskPatterns: readonly RiskPattern[];
-}): Pick<ReferenceEntry, "dayType" | "significance" | "topSeverity" | "categories"> {
+type Card = { dayType: DayType; significance: string; riskPatterns: readonly RiskPattern[] };
+
+function summarize(
+  card: Card,
+): Pick<ReferenceEntry, "dayType" | "significance" | "topSeverity" | "categories"> {
   const topSeverity = card.riskPatterns.reduce<Severity>(
     (max, r) => (r.severity > max ? r.severity : max),
     1,
@@ -35,12 +35,17 @@ function summarize(card: {
   return { dayType: card.dayType, significance: card.significance, topSeverity, categories };
 }
 
+/** Union of hand-written seed cards and promoted cards, keyed by MM-DD. */
+function allFixedCards(): Record<string, Card> {
+  return { ...seedCardsByMonthDay, ...promotedByMonthDay };
+}
+
 /**
- * Flatten every published (reviewed) card into a reference list, sorted by calendar order.
- * Lunar holidays sort last (no fixed MM-DD). Only reviewed cards are ever surfaced.
+ * Flatten every published card into a reference list, sorted by calendar order.
+ * Lunar holidays sort last (no fixed MM-DD).
  */
 export function referenceEntries(): ReferenceEntry[] {
-  const fixed: ReferenceEntry[] = Object.entries(seedCardsByMonthDay).map(([key, card]) => {
+  const fixed: ReferenceEntry[] = Object.entries(allFixedCards()).map(([key, card]) => {
     const [month, day] = key.split("-");
     return {
       key,
@@ -49,7 +54,8 @@ export function referenceEntries(): ReferenceEntry[] {
     };
   });
 
-  const lunar: ReferenceEntry[] = Object.entries(seedCardsByLunarKey).map(([lunarKey, card]) => ({
+  const lunarCards = { ...seedCardsByLunarKey, ...promotedByLunarKey };
+  const lunar: ReferenceEntry[] = Object.entries(lunarCards).map(([lunarKey, card]) => ({
     key: `lunar:${lunarKey}`,
     label: `${LUNAR_LABEL[lunarKey] ?? lunarKey} (음력)`,
     ...summarize(card),
@@ -59,11 +65,6 @@ export function referenceEntries(): ReferenceEntry[] {
   return [...fixed, ...lunar];
 }
 
-/**
- * Resolve a reference entry to an ISO date in the given year so the UI can jump to it.
- * Fixed "MM-DD" keys map directly; lunar keys look up that year's solar date in the
- * calendar (returns undefined if that year isn't seeded yet).
- */
 /** ISO dates (for the given year) that have a published card — used to light up the calendar. */
 export function publishedIsoDates(year: number): Set<string> {
   const set = new Set<string>();
@@ -74,21 +75,11 @@ export function publishedIsoDates(year: number): Set<string> {
   return set;
 }
 
-/** ISO dates that have an unreviewed draft card (검수 대기), for calendar marking. */
-export function draftIsoDates(year: number): Set<string> {
-  const set = new Set<string>();
-  for (const key of Object.keys(draftCardsByMonthDay)) {
-    set.add(`${year}-${key}`);
-  }
-  const yearMap = seedCalendar.lunarHolidaysByYear[year];
-  if (yearMap) {
-    for (const [isoDate, holiday] of Object.entries(yearMap)) {
-      if (holiday.lunarKey && draftCardsByLunarKey[holiday.lunarKey]) set.add(isoDate);
-    }
-  }
-  return set;
-}
-
+/**
+ * Resolve a reference entry to an ISO date in the given year so the UI can jump to it.
+ * Fixed "MM-DD" keys map directly; lunar keys look up that year's solar date in the
+ * calendar (returns undefined if that year isn't seeded yet).
+ */
 export function resolveEntryDate(entry: ReferenceEntry, year: number): string | undefined {
   if (!entry.key.startsWith("lunar:")) {
     return `${year}-${entry.key}`;
