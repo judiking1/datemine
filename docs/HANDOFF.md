@@ -36,15 +36,25 @@ nationalism), 7/17 초복(food), 설날·추석 명절(gender+generation, lunarK
 오늘 카드(심각도/카테고리 칩·요일·엠프티) → **레퍼런스 목록**(`ReferenceList`/`upcoming.ts`,
 발행 카드 연표) → 면책 푸터. `.claude/launch.json`의 `mobile-web`로 프리뷰.
 
-## 다음 할 일 (우선순위)
+## Phase 2 파이프라인 (구축됨, 2026-08-16)
+- **스테이징**: `data/drafts/*.json`(앱 미연결) → 검수 → `seed.ts` 승격. `data/drafts/README.md`.
+- **검증 게이트**: `pnpm check:drafts`(스키마·taxonomy·`reviewedAt` 금지·URL유출) → pre-commit 포함.
+- **진행률**: `pnpm progress`(후보 대비 초안·발행 %, 검수 대기 목록).
+- **초안 배치**: sev3 6셀 커밋됨(`data/drafts/`): 03-01(merge), 03-02, 04-16, 05-18, 08-14, 10-31.
+  sev2 상업/문화 8셀 수집 진행 중(밸런타인·화이트데이·어린이날·어버이날·한글날·빼빼로·크리스마스·중복).
 
-1. **Phase 2 셀 채우기** — sev3 미발행 셀부터. ⚠️ **초안 스테이징 필요**: 현재
-   `getDailyContext`는 리뷰 여부 무관하게 seed 카드를 노출하므로, 미검수 초안을 seed.ts에
-   바로 넣으면 안 됨. `data/drafts/`(앱 미연결) → 검수 → seed 승격 구조를 먼저 만들 것.
-   실명 raw는 `data/raw/`(gitignore), 초안은 `reviewedAt` 없이.
-2. **커버리지 진행률 CLI** — ingest coverage 모델로 "몇 % 조사됨" 산출(미구현).
-3. **발행 데이터 분리** — seed.ts가 커지면 `apps/mobile/src/data/published/`로 분할.
-4. **소유자 검수** — 기존 초안 카드 톤·사실 확인 후 확정.
+## ⚠️ 소유자 검수 대기 (승격 = 앱 노출)
+`data/drafts/`의 초안을 톤·사실·개인특정 확인 후 `reviewedAt` 부여 → `seed.ts`로 이동 → 초안 삭제.
+승격 시 주의(초안 reviewNotes에 상세):
+- **05-18, 04-16, 08-14, 10-31**: `seedCalendar.fixedEvents`에 memorial 항목 신규 추가 필요(현재 미등재).
+- **03-01**: 기존 카드에 history 패턴 append(mergeInto), significance/advice 병합.
+- **03-02**: seasonal(고정일 아님) — 시즌 노출 방식 검토.
+- **스승의날→class 임시매핑**(촌지 카테고리 부재): 신규 taxonomy(`bribery` 등) 검토 여지.
+
+## 남은 백로그
+1. **정치·추모 sev2 셀 수집** — 제주4·3, 4·19, 6·10, 6·25, 개천절 등(민감, 방향 확인 후).
+2. **발행 데이터 분리** — seed.ts가 커지면 `apps/mobile/src/data/published/`로 분할.
+3. **UI 추가** — 폰 프리뷰 대응, 공유카드, 날짜 네비게이션.
 
 ## 수집 시 반드시 (하드 규칙 — AGENTS.md 4장)
 
