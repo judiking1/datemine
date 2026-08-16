@@ -1,0 +1,112 @@
+[
+  {
+    "dateKey": "04-22",
+    "eventName": "지구의 날",
+    "dayType": "anniversary",
+    "category": "animalEnv",
+    "recurrencePattern": "이 날에만 몰아 내놓는 '친환경' 특별기획·캠페인이 실질 효과는 미미해 매년 그린워싱 비판을 부른다.",
+    "severity": 2,
+    "domains": ["business", "media", "creator"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "06-05",
+    "eventName": "환경의 날",
+    "dayType": "anniversary",
+    "category": "animalEnv",
+    "recurrencePattern": "당일·6월 한정으로 쏟아지는 에코 마케팅이 일회성 이벤트에 그친다는 지적과 함께 그린워싱 논란으로 되돌아온다.",
+    "severity": 2,
+    "domains": ["business", "media", "creator"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "05-31",
+    "eventName": "바다의 날",
+    "dayType": "anniversary",
+    "category": "animalEnv",
+    "recurrencePattern": "해양·플라스틱 정화를 내세운 캠페인이 당일 홍보성 일회 행사에 머물러 실효성 없는 보여주기라는 비판을 받는다.",
+    "severity": 1,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "05-11",
+    "eventName": "입양의 날",
+    "dayType": "anniversary",
+    "category": "minority",
+    "recurrencePattern": "입양을 미담·감동 서사로만 소비하는 콘텐츠가 당사자 목소리와 구조적 문제를 지운다는 비판을 매년 받는다.",
+    "severity": 2,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "05-21",
+    "eventName": "부부의 날",
+    "dayType": "anniversary",
+    "category": "minority",
+    "recurrencePattern": "이성애·유자녀 '정상가족' 틀만 반복 재현하는 광고가 다양한 가족 형태를 배제한다는 지적이 되풀이된다.",
+    "severity": 2,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "05-18",
+    "eventName": "성년의 날",
+    "dayType": "anniversary",
+    "category": "ad",
+    "recurrencePattern": "'장미·향수' 필수 선물 프레임을 앞세운 과열 상술과 성적 뉘앙스의 마케팅이 성년의 의미를 소비로 축소한다는 비판을 부른다.",
+    "severity": 1,
+    "domains": ["business", "media", "creator"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "06-03",
+    "eventName": "전국동시지방선거일",
+    "dayType": "anniversary",
+    "category": "election",
+    "recurrencePattern": "선거 국면에서 의상 색·SNS 게시물·투표 독려가 특정 정당 지지로 해석돼 정치색 논란과 댓글 공세로 번진다.",
+    "severity": 2,
+    "domains": ["entertainment", "media", "creator"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "06-15",
+    "eventName": "6·15 남북공동선언 기념일",
+    "dayType": "anniversary",
+    "category": "politics",
+    "recurrencePattern": "통일·대북 관계를 소환하는 발언이 진영에 따라 정반대로 평가돼 이념 논쟁으로 확대된다.",
+    "severity": 2,
+    "domains": ["politics", "media"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "06-07",
+    "eventName": "성소수자 축제 시즌(퀴어문화축제)",
+    "dayType": "anniversary",
+    "category": "religion",
+    "recurrencePattern": "축제 후원·참여 여부를 두고 지지와 종교계 반발이 정면충돌해 기업·브랜드가 양쪽 표적이 되는 구도가 매년 반복된다.",
+    "severity": 2,
+    "domains": ["business", "media", "creator"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "06-01",
+    "eventName": "호국보훈의 달(보훈 마케팅 시즌)",
+    "dayType": "anniversary",
+    "category": "nationalism",
+    "recurrencePattern": "6월 한정 보훈·애국 마케팅이 일회성 이벤트를 지속 활동으로 포장했다거나 상술이라는 비판으로 되돌아온다.",
+    "severity": 2,
+    "domains": ["business", "media", "general"],
+    "seasonal": true,
+    "alreadyPublished": false
+  }
+]

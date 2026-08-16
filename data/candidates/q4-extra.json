@@ -1,0 +1,101 @@
+[
+  {
+    "dateKey": "10-01",
+    "eventName": "국군의 날",
+    "dayType": "memorial",
+    "category": "military",
+    "recurrencePattern": "군 기념·시가행진·임시공휴일 지정을 두고 안보 과시냐 정치적 동원이냐를 둘러싼 진영 공방이 매년 반복되며, 무신경한 편승 콘텐츠가 양쪽에서 공격받는다",
+    "severity": 2,
+    "domains": ["politics", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "10-02",
+    "eventName": "노인의 날",
+    "dayType": "memorial",
+    "category": "generation",
+    "recurrencePattern": "고령층을 기리는 날에 노인 비하성 표현이나 세대 조롱 밈을 무심코 얹은 콘텐츠가 에이지즘 비판으로 번지는 패턴이 반복된다",
+    "severity": 2,
+    "domains": ["media", "creator", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "10-25",
+    "eventName": "독도의 날",
+    "dayType": "anniversary",
+    "category": "nationalism",
+    "recurrencePattern": "영토 주제를 애국 마케팅에 활용하다 국내외 반응이 갈리고, 특히 해외 서비스·현지팀을 둔 기업이 국가별 상반된 대응으로 이중잣대 논란에 휘말리는 흐름이 매년 되풀이된다",
+    "severity": 2,
+    "domains": ["business", "gaming", "creator"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "11-11",
+    "eventName": "농업인의 날",
+    "dayType": "memorial",
+    "category": "nationalism",
+    "recurrencePattern": "같은 날 대형 데이 상술에 가려 농업·국산 농산물 홀대 프레임이 부각되며, 수입산 논란이나 생색성 상생 마케팅이 진정성 비판을 부르는 사례가 반복된다",
+    "severity": 1,
+    "domains": ["business", "foodservice", "media"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "12-01",
+    "eventName": "세계 에이즈의 날",
+    "dayType": "memorial",
+    "category": "minority",
+    "recurrencePattern": "질병에 대한 낙인·혐오 표현이나 감염인을 희화화한 콘텐츠가 인권 감수성 결여로 지적받고, 무지에 기댄 발언이 사과로 이어지는 패턴이 반복된다",
+    "severity": 2,
+    "domains": ["media", "creator", "medical"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "12-03",
+    "eventName": "세계 장애인의 날",
+    "dayType": "memorial",
+    "category": "minority",
+    "recurrencePattern": "장애를 비유·조롱에 쓰는 표현이나 시혜적 톤의 캠페인이 당사자 관점 부재로 역풍을 맞고, 과거 장애 비하 발언이 소환되는 흐름이 매년 반복된다",
+    "severity": 2,
+    "domains": ["media", "creator", "business"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "12-10",
+    "eventName": "세계 인권의 날",
+    "dayType": "memorial",
+    "category": "minority",
+    "recurrencePattern": "인권을 내건 캠페인·메시지가 정작 내부 관행이나 과거 행보와 어긋난다는 위선 비판을 부르고, 특정 소수자 이슈를 둘러싼 진영 대립이 얹히는 사례가 반복된다",
+    "severity": 1,
+    "domains": ["politics", "business", "media"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "12-30",
+    "eventName": "정시·대입 원서 시즌",
+    "dayType": "anniversary",
+    "category": "class",
+    "recurrencePattern": "정시·수시 비율과 학생부 평가를 둘러싼 입시 공정성 논쟁이 재점화되고, 계층·사교육 격차를 무시한 발언이나 마케팅이 반발을 부르는 패턴이 반복된다",
+    "severity": 2,
+    "domains": ["academia", "media", "business"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "12-31",
+    "eventName": "제야의 종·연말 카운트다운",
+    "dayType": "anniversary",
+    "category": "disaster",
+    "recurrencePattern": "대규모 압사 참사 이후 인파 안전 감수성이 커져, 도심 밀집 카운트다운 행사의 안전 관리 미비나 안전을 가벼이 다룬 이벤트 톤이 비판을 부르는 흐름이 이어진다",
+    "severity": 2,
+    "domains": ["business", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  }
+]

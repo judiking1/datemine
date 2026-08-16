@@ -1,0 +1,101 @@
+[
+  {
+    "dateKey": "07-17",
+    "eventName": "제헌절",
+    "dayType": "holiday",
+    "category": "politics",
+    "recurrencePattern": "18년 만의 국경일 공휴일 재지정 이후 개헌·헌정 이념 공방이 재점화되며, 헌법 소재를 가볍게 소비하거나 진영 편향 발언을 얹었다가 정치 편향 논란에 휘말린다.",
+    "severity": 2,
+    "domains": ["politics", "media", "general"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "lunar:chilseok",
+    "eventName": "칠석",
+    "dayType": "solarTerm",
+    "category": "ad",
+    "recurrencePattern": "견우직녀를 '한국판 발렌타인'으로 띄우는 과장 상술·연인 마케팅이 반복되고, 일부는 역사 감수성 없는 시기 콘셉트로 시의성 검수 실패 비판을 부른다.",
+    "severity": 1,
+    "domains": ["business", "creator", "foodservice"],
+    "seasonal": false,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "07-26",
+    "eventName": "여름 피서지 성수기",
+    "dayType": "anniversary",
+    "category": "ad",
+    "recurrencePattern": "계곡 평상 자릿세·고액 주차료·최소주문 강요 등 피서지 '바가지 상술'이 매년 반복 적발되며, 관련 업소·지역이 소비자 기만·과장 요금으로 여론의 표적이 된다.",
+    "severity": 2,
+    "domains": ["foodservice", "business", "media"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "08-02",
+    "eventName": "여름 휴가철 항공 성수기",
+    "dayType": "anniversary",
+    "category": "gapjil",
+    "recurrencePattern": "성수기 대규모 지연·결항에 부실 안내와 보상 회피로 대응했다가 소비자 홀대·배짱 영업 비판을 받는 일이 매년 되풀이된다.",
+    "severity": 2,
+    "domains": ["business", "media", "general"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "08-05",
+    "eventName": "폭염 절정기 옥외노동",
+    "dayType": "anniversary",
+    "category": "labor",
+    "recurrencePattern": "폭염 속 옥외작업 강행과 휴게·냉방 조치 미비로 온열질환 사망 산재가 집중되며, 사측의 안전 관리 소홀과 작업중지권 무력화가 매년 비판받는다.",
+    "severity": 3,
+    "domains": ["business", "general", "media"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "07-31",
+    "eventName": "여름 물놀이 성수기",
+    "dayType": "anniversary",
+    "category": "disaster",
+    "recurrencePattern": "물놀이 인명사고가 급증하는 시기에 위험을 조장하거나 안전 무신경한 밝은 톤 콘텐츠·자극적 챌린지를 올렸다가 참사 감수성 부족으로 역풍을 맞는다.",
+    "severity": 2,
+    "domains": ["creator", "entertainment", "media"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "09-05",
+    "eventName": "초가을 태풍·풍수해 시기",
+    "dayType": "anniversary",
+    "category": "disaster",
+    "recurrencePattern": "태풍·호우 피해가 이어지는 시기에 부적절한 프로모션·밝은 톤 홍보나 재난 희화화 콘텐츠를 내보냈다가 재난 추모 감수성 부족으로 비판받는다.",
+    "severity": 2,
+    "domains": ["business", "media", "general"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "08-10",
+    "eventName": "프로스포츠 여름 시즌 절정",
+    "dayType": "anniversary",
+    "category": "vice",
+    "recurrencePattern": "리그 중반 흥행기에 불법 스포츠도박·승부조작 연루 의혹이 반복적으로 불거지며, 관련 선수·구단이 도덕성과 스포츠 공정성 훼손으로 도마에 오른다.",
+    "severity": 3,
+    "domains": ["sports", "gaming", "media"],
+    "seasonal": true,
+    "alreadyPublished": false
+  },
+  {
+    "dateKey": "08-01",
+    "eventName": "여름 휴가철 외식 성수기",
+    "dayType": "anniversary",
+    "category": "gapjil",
+    "recurrencePattern": "성수기 대규모 예약부도(노쇼)로 자영업 피해가 반복되며, 유명인·단체의 무책임한 노쇼나 과도한 예약금 배짱 영업이 양측 모두 갑질 논란으로 번진다.",
+    "severity": 2,
+    "domains": ["foodservice", "creator", "entertainment"],
+    "seasonal": true,
+    "alreadyPublished": false
+  }
+]
