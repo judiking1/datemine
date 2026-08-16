@@ -2,7 +2,7 @@ import { toIsoDate } from "@datemine/domain";
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { theme } from "./theme";
-import { publishedIsoDates } from "./upcoming";
+import { draftIsoDates, publishedIsoDates } from "./upcoming";
 
 const WEEK_LABELS = ["일", "월", "화", "수", "목", "금", "토"] as const;
 
@@ -29,16 +29,19 @@ function monthCells(year: number, month0: number): { key: string; iso: string | 
 export function Calendar({
   selected,
   onSelect,
+  reviewMode = false,
 }: {
   selected: string;
   onSelect: (isoDate: string) => void;
+  reviewMode?: boolean;
 }): React.JSX.Element {
   const [view, setView] = useState(() => ({
     year: Number(selected.slice(0, 4)),
     month0: Number(selected.slice(5, 7)) - 1,
   }));
   const today = toIsoDate(new Date());
-  const marked = publishedIsoDates(view.year);
+  const published = publishedIsoDates(view.year);
+  const drafts = reviewMode ? draftIsoDates(view.year) : new Set<string>();
   const cells = monthCells(view.year, view.month0);
 
   const stepMonth = (delta: number) => {
@@ -72,7 +75,8 @@ export function Calendar({
         {cells.map(({ key, iso }) => {
           if (!iso) return <View key={key} style={styles.cell} />;
           const day = Number(iso.slice(8));
-          const isMarked = marked.has(iso);
+          const isPublished = published.has(iso);
+          const isDraft = !isPublished && drafts.has(iso);
           const isSelected = iso === selected;
           const isToday = iso === today;
           return (
@@ -81,7 +85,8 @@ export function Calendar({
               style={[
                 styles.cell,
                 styles.dayCell,
-                isMarked && styles.marked,
+                isPublished && styles.published,
+                isDraft && styles.draft,
                 isSelected && styles.selected,
               ]}
               onPress={() => onSelect(iso)}
@@ -89,9 +94,8 @@ export function Calendar({
               <Text
                 style={[
                   styles.dayText,
-                  isMarked && styles.markedText,
-                  isSelected && styles.selectedText,
-                  isToday && !isSelected && styles.todayText,
+                  (isPublished || isDraft) && styles.dataText,
+                  isToday && styles.todayText,
                 ]}
               >
                 {day}
@@ -102,7 +106,18 @@ export function Calendar({
         })}
       </View>
 
-      <Text style={styles.legend}>● 밝은 날 = 조심할 데이터가 있는 날</Text>
+      <View style={styles.legendRow}>
+        <View style={[styles.legendDot, { backgroundColor: theme.color.accent }]} />
+        <Text style={styles.legend}>발행됨</Text>
+        {reviewMode && (
+          <>
+            <View style={[styles.legendDot, { backgroundColor: "#FFD166" }]} />
+            <Text style={styles.legend}>검수 대기</Text>
+          </>
+        )}
+        <View style={[styles.legendRing]} />
+        <Text style={styles.legend}>선택/오늘</Text>
+      </View>
     </View>
   );
 }
@@ -145,24 +160,40 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 2,
   },
-  dayCell: { borderRadius: theme.radius.md },
+  dayCell: { borderRadius: theme.radius.md, borderWidth: 2, borderColor: "transparent" },
   dayText: { color: theme.color.textMuted, fontSize: theme.font.body },
-  marked: { backgroundColor: "#2A1518", borderWidth: 1, borderColor: theme.color.accent },
-  markedText: { color: theme.color.text, fontWeight: "700" },
-  selected: { backgroundColor: theme.color.accent, borderColor: theme.color.accent },
-  selectedText: { color: "#0B0B0F", fontWeight: "800" },
-  todayText: { color: theme.color.text },
+  // Data days: solid fills so they clearly stand out from empty days.
+  published: { backgroundColor: theme.color.accent },
+  draft: { backgroundColor: "#4A3B12" },
+  // Selection/today: border only, so it never masquerades as a data day.
+  selected: { borderColor: theme.color.text },
+  dataText: { color: theme.color.text, fontWeight: "800" },
+  todayText: { textDecorationLine: "underline" },
   todayDot: {
     width: 4,
     height: 4,
     borderRadius: 2,
-    backgroundColor: theme.color.accent,
+    backgroundColor: theme.color.textMuted,
     marginTop: 1,
+  },
+  legendRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    gap: theme.space.xs,
+  },
+  legendDot: { width: 10, height: 10, borderRadius: 5 },
+  legendRing: {
+    width: 10,
+    height: 10,
+    borderRadius: 3,
+    borderWidth: 2,
+    borderColor: theme.color.text,
   },
   legend: {
     color: theme.color.textMuted,
     fontSize: theme.font.caption,
-    opacity: 0.8,
-    textAlign: "center",
+    marginRight: theme.space.sm,
   },
 });

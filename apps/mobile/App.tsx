@@ -13,7 +13,8 @@ import { TodayCard } from "./src/TodayCard";
 export default function App(): React.JSX.Element {
   const [selectedDate, setSelectedDate] = useState(() => toIsoDate(new Date()));
   const [showCalendar, setShowCalendar] = useState(false);
-  const context = getDailyContext(selectedDate);
+  const [reviewMode, setReviewMode] = useState(false);
+  const context = getDailyContext(selectedDate, reviewMode);
 
   const pick = (isoDate: string) => {
     setSelectedDate(isoDate);
@@ -26,7 +27,17 @@ export default function App(): React.JSX.Element {
         <StatusBar style="light" />
         <ScrollView contentContainerStyle={styles.scroll}>
           <View style={styles.header}>
-            <Text style={styles.brand}>datemine</Text>
+            <View style={styles.brandRow}>
+              <Text style={styles.brand}>datemine</Text>
+              <Pressable
+                style={[styles.reviewToggle, reviewMode && styles.reviewToggleOn]}
+                onPress={() => setReviewMode((v) => !v)}
+              >
+                <Text style={[styles.reviewToggleText, reviewMode && styles.reviewToggleTextOn]}>
+                  검수 모드 {reviewMode ? "ON" : "OFF"}
+                </Text>
+              </Pressable>
+            </View>
             <Text style={styles.tagline}>오늘, 무슨 말은 참아야 할까</Text>
           </View>
           <DateNav date={selectedDate} onChange={setSelectedDate} />
@@ -38,7 +49,9 @@ export default function App(): React.JSX.Element {
               {showCalendar ? "달력 닫기 ▲" : "달력으로 날짜 고르기 ▾"}
             </Text>
           </Pressable>
-          {showCalendar && <Calendar selected={selectedDate} onSelect={pick} />}
+          {showCalendar && (
+            <Calendar selected={selectedDate} onSelect={pick} reviewMode={reviewMode} />
+          )}
           <TodayCard context={context} />
           <ReferenceList onSelect={setSelectedDate} />
           <Text style={styles.footer}>
@@ -64,11 +77,35 @@ const styles = StyleSheet.create({
     gap: theme.space.xs,
     marginBottom: theme.space.sm,
   },
+  brandRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
   brand: {
     color: theme.color.accent,
     fontSize: theme.font.heading,
     fontWeight: "800",
     letterSpacing: 0.5,
+  },
+  reviewToggle: {
+    borderWidth: 1,
+    borderColor: theme.color.border,
+    borderRadius: theme.radius.md,
+    paddingHorizontal: theme.space.sm,
+    paddingVertical: theme.space.xs,
+  },
+  reviewToggleOn: {
+    borderColor: "#FFD166",
+    backgroundColor: "#4A3B12",
+  },
+  reviewToggleText: {
+    color: theme.color.textMuted,
+    fontSize: theme.font.caption,
+    fontWeight: "700",
+  },
+  reviewToggleTextOn: {
+    color: "#FFD166",
   },
   tagline: {
     color: theme.color.textMuted,

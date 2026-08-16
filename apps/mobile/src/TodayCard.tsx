@@ -1,6 +1,7 @@
 import {
   type DailyContext,
   type DayType,
+  isPublishable,
   type RiskCategory,
   type RiskPattern,
   riskCategoryLabel,
@@ -44,9 +45,15 @@ function formatDate(isoDate: string): string {
 export function TodayCard({ context }: { context: DailyContext }): React.JSX.Element {
   const hasRisks = context.riskPatterns.length > 0;
   const groups = groupByCategory(context.riskPatterns);
+  const isDraft = hasRisks && !isPublishable(context);
 
   return (
     <View style={styles.card}>
+      {isDraft && (
+        <View style={styles.draftBanner}>
+          <Text style={styles.draftBannerText}>검수 대기 · 미발행 (초안)</Text>
+        </View>
+      )}
       <View style={styles.headerRow}>
         <Text style={styles.date}>{formatDate(context.date)}</Text>
         <View style={styles.badge}>
@@ -112,6 +119,18 @@ const styles = StyleSheet.create({
     borderColor: theme.color.border,
     padding: theme.space.lg,
     gap: theme.space.md,
+  },
+  draftBanner: {
+    backgroundColor: "#4A3B12",
+    borderRadius: theme.radius.md,
+    paddingHorizontal: theme.space.sm,
+    paddingVertical: theme.space.xs,
+    alignSelf: "flex-start",
+  },
+  draftBannerText: {
+    color: "#FFD166",
+    fontSize: theme.font.caption,
+    fontWeight: "800",
   },
   headerRow: {
     flexDirection: "row",

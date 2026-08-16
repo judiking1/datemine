@@ -1,4 +1,5 @@
 import type { DayType, RiskCategory, RiskPattern, Severity } from "@datemine/domain";
+import { draftCardsByLunarKey, draftCardsByMonthDay } from "./data/draftsPreview.generated";
 import { seedCalendar, seedCardsByLunarKey, seedCardsByMonthDay } from "./data/seed";
 
 /** One row in the reference calendar: a published high-signal day. */
@@ -69,6 +70,21 @@ export function publishedIsoDates(year: number): Set<string> {
   for (const entry of referenceEntries()) {
     const iso = resolveEntryDate(entry, year);
     if (iso) set.add(iso);
+  }
+  return set;
+}
+
+/** ISO dates that have an unreviewed draft card (검수 대기), for calendar marking. */
+export function draftIsoDates(year: number): Set<string> {
+  const set = new Set<string>();
+  for (const key of Object.keys(draftCardsByMonthDay)) {
+    set.add(`${year}-${key}`);
+  }
+  const yearMap = seedCalendar.lunarHolidaysByYear[year];
+  if (yearMap) {
+    for (const [isoDate, holiday] of Object.entries(yearMap)) {
+      if (holiday.lunarKey && draftCardsByLunarKey[holiday.lunarKey]) set.add(isoDate);
+    }
   }
   return set;
 }

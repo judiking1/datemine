@@ -13,7 +13,8 @@
     "lint": "turbo run lint",
     "check:boundaries": "node scripts/check-boundaries.mjs",
     "check:drafts": "node scripts/check-drafts.mjs",
-    "progress": "node scripts/progress.mjs"
+    "progress": "node scripts/progress.mjs",
+    "build:drafts": "node scripts/build-draft-preview.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
