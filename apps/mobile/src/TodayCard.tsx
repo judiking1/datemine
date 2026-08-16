@@ -2,10 +2,27 @@ import {
   type DailyContext,
   type DayType,
   type RiskCategory,
+  type RiskPattern,
   riskCategoryLabel,
 } from "@datemine/domain";
 import { StyleSheet, Text, View } from "react-native";
 import { severityMeta, theme } from "./theme";
+
+/** Group risk patterns by category, preserving first-seen order. */
+function groupByCategory(
+  patterns: readonly RiskPattern[],
+): { category: RiskCategory | undefined; items: RiskPattern[] }[] {
+  const groups: { category: RiskCategory | undefined; items: RiskPattern[] }[] = [];
+  for (const p of patterns) {
+    let group = groups.find((g) => g.category === p.category);
+    if (!group) {
+      group = { category: p.category, items: [] };
+      groups.push(group);
+    }
+    group.items.push(p);
+  }
+  return groups;
+}
 
 const DAY_TYPE_LABEL: Record<DayType, string> = {
   holiday: "국경일",
@@ -26,6 +43,7 @@ function formatDate(isoDate: string): string {
 
 export function TodayCard({ context }: { context: DailyContext }): React.JSX.Element {
   const hasRisks = context.riskPatterns.length > 0;
+  const groups = groupByCategory(context.riskPatterns);
 
   return (
     <View style={styles.card}>
@@ -36,36 +54,44 @@ export function TodayCard({ context }: { context: DailyContext }): React.JSX.Ele
         </View>
       </View>
 
+      {hasRisks && <Text style={styles.adviceLabel}>종합 충고</Text>}
       <Text style={styles.advice}>{context.advice}</Text>
       <Text style={styles.significance}>{context.significance}</Text>
 
       {hasRisks && (
         <View style={styles.sectionRow}>
-          <Text style={styles.sectionLabel}>오늘의 지뢰</Text>
-          <Text style={styles.sectionCount}>{context.riskPatterns.length}</Text>
+          <Text style={styles.sectionLabel}>카테고리별 행동지침</Text>
+          <Text style={styles.sectionCount}>{groups.length}</Text>
         </View>
       )}
 
-      {context.riskPatterns.map((risk) => {
-        const sev = severityMeta(risk.severity);
-        return (
-          <View key={risk.pattern} style={[styles.risk, { borderLeftColor: sev.color }]}>
-            <View style={styles.riskHeader}>
-              <View style={[styles.sevChip, { backgroundColor: sev.color }]}>
-                <Text style={styles.sevChipText}>{sev.label}</Text>
-              </View>
-              <View style={styles.catChip}>
-                <Text style={styles.catChipText}>
-                  {riskCategoryLabel(risk.category as RiskCategory)}
-                </Text>
-              </View>
+      {groups.map((group) => (
+        <View key={group.category ?? "_"} style={styles.group}>
+          {group.category && (
+            <View style={styles.groupHeader}>
+              <Text style={styles.groupTitle}>{riskCategoryLabel(group.category)}</Text>
+              {group.items.length > 1 && (
+                <Text style={styles.groupCount}>{group.items.length}</Text>
+              )}
             </View>
-            <Text style={styles.riskPattern}>{risk.pattern}</Text>
-            <Text style={styles.riskWhy}>{risk.whyItBackfires}</Text>
-            <Text style={styles.riskExample}>{risk.exampleSummary}</Text>
-          </View>
-        );
-      })}
+          )}
+          {group.items.map((risk) => {
+            const sev = severityMeta(risk.severity);
+            return (
+              <View key={risk.pattern} style={[styles.risk, { borderLeftColor: sev.color }]}>
+                <View style={styles.riskHeader}>
+                  <View style={[styles.sevChip, { backgroundColor: sev.color }]}>
+                    <Text style={styles.sevChipText}>{sev.label}</Text>
+                  </View>
+                </View>
+                <Text style={styles.riskPattern}>{risk.pattern}</Text>
+                <Text style={styles.riskWhy}>{risk.whyItBackfires}</Text>
+                <Text style={styles.riskExample}>{risk.exampleSummary}</Text>
+              </View>
+            );
+          })}
+        </View>
+      ))}
 
       {!hasRisks && (
         <View style={styles.empty}>
@@ -111,6 +137,12 @@ const styles = StyleSheet.create({
     fontSize: theme.font.caption,
     fontWeight: "600",
   },
+  adviceLabel: {
+    color: theme.color.accent,
+    fontSize: theme.font.caption,
+    fontWeight: "800",
+    letterSpacing: 1,
+  },
   advice: {
     color: theme.color.text,
     fontSize: theme.font.title,
@@ -139,6 +171,28 @@ const styles = StyleSheet.create({
     fontSize: theme.font.caption,
     fontWeight: "800",
   },
+  group: {
+    gap: theme.space.sm,
+  },
+  groupHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.space.sm,
+  },
+  groupTitle: {
+    color: theme.color.text,
+    fontSize: theme.font.body,
+    fontWeight: "700",
+  },
+  groupCount: {
+    color: theme.color.textMuted,
+    fontSize: theme.font.caption,
+    fontWeight: "700",
+    backgroundColor: theme.color.bg,
+    borderRadius: theme.radius.md,
+    paddingHorizontal: theme.space.sm,
+    paddingVertical: 1,
+  },
   risk: {
     backgroundColor: theme.color.bg,
     borderRadius: theme.radius.md,
@@ -161,18 +215,6 @@ const styles = StyleSheet.create({
     color: "#0B0B0F",
     fontSize: theme.font.caption,
     fontWeight: "800",
-  },
-  catChip: {
-    borderRadius: theme.radius.md,
-    borderWidth: 1,
-    borderColor: theme.color.border,
-    paddingHorizontal: theme.space.sm,
-    paddingVertical: 2,
-  },
-  catChipText: {
-    color: theme.color.textMuted,
-    fontSize: theme.font.caption,
-    fontWeight: "600",
   },
   riskPattern: {
     color: theme.color.text,
