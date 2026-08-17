@@ -36,7 +36,17 @@ nationalism), 7/17 초복(food), 설날·추석 명절(gender+generation, lunarK
 오늘 카드(심각도/카테고리 칩·요일·엠프티) → **레퍼런스 목록**(`ReferenceList`/`upcoming.ts`,
 발행 카드 연표) → 면책 푸터. `.claude/launch.json`의 `mobile-web`로 프리뷰.
 
-## 일괄 발행 완료 (2026-08-16, 소유자 결정)
+## 대량 수집·발행 현황 (2026-08-17)
+- **발행 57일치(후보 69일의 82.6%).** 전 카테고리 센 카피 훅 적용.
+- **카피 톤**: 각 카드에 `hook`(한 방 문구) 히어로. 기존 34개는 `apps/mobile/src/data/hooks.ts`,
+  신규분은 카드 자체의 `card.hook`. getToday가 card.hook 우선. 추모/재난은 존중 톤 유지.
+- **증분 수집**: `scripts/promote-incremental.mjs`(기존 유지+신규 병합) → `published.ts`.
+  2차 심화 발굴 후보 `data/candidates/*-extra.json`(36셀) 중 24셀 발행 완료.
+- **남은 후보(미발행)**: 그린워싱 중복(물의날·환경의날·바다의날), 봄산불·프로야구·보훈의달·
+  인권의날(sev1) 등 저신호 + 날짜충돌(성년의날·제헌절·농업인의날·외식노쇼)은 보류.
+- **UI**: 달력 팝오버(중앙 날짜 탭), 오늘로 헤더 버튼, 훅 히어로.
+
+## 일괄 발행 (2026-08-16, 소유자 결정)
 - 초안 28일치를 **전부 승격**(`scripts/promote-all.mjs` → `apps/mobile/src/data/published.ts`).
   reviewedAt 일괄 스탬프. **발행 34일치(후보의 91.9%).** 검수는 발행 후 하루씩 진행 예정.
 - `published.ts`가 이제 **정식 발행 저장소**(1회 생성 후 손편집 가능). `data/drafts/`·초안 프리뷰·
