@@ -65,7 +65,9 @@ export function TodayCard({ context }: { context: DailyContext }): React.JSX.Ele
 
       {hasRisks && (
         <View style={styles.sectionRow}>
-          <Text style={styles.sectionLabel}>카테고리별 행동지침</Text>
+          <Text style={styles.sectionLabel}>
+            {context.fortune ? "오늘의 지뢰밭 · 상시" : "카테고리별 행동지침"}
+          </Text>
           <Text style={styles.sectionCount}>{groups.length}</Text>
         </View>
       )}
