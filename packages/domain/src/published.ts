@@ -49,6 +49,14 @@ export interface DailyContext {
    * never be served to the client.
    */
   readonly reviewedAt?: string;
+  /**
+   * "오늘의 눈치" — a general daily caution shown on days with no specific event, so every
+   * day has something. Not tied to a real incident; it's brand-voice general wisdom.
+   */
+  readonly fortune?: {
+    readonly level: Severity;
+    readonly theme: string;
+  };
 }
 
 /** A DailyContext is publishable only after passing the human review gate. */

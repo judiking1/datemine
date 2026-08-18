@@ -54,11 +54,12 @@ export function TodayCard({ context }: { context: DailyContext }): React.JSX.Ele
         </View>
       </View>
 
-      {context.hook ? (
-        <Text style={styles.hook}>{context.hook}</Text>
-      ) : (
-        hasRisks && <Text style={styles.adviceLabel}>종합 충고</Text>
-      )}
+      {context.fortune ? (
+        <Text style={styles.fortuneLabel}>오늘의 눈치 · {context.fortune.theme}</Text>
+      ) : hasRisks ? (
+        <Text style={styles.adviceLabel}>종합 충고</Text>
+      ) : null}
+      {context.hook && <Text style={styles.hook}>{context.hook}</Text>}
       <Text style={context.hook ? styles.adviceUnderHook : styles.advice}>{context.advice}</Text>
       <Text style={styles.significance}>{context.significance}</Text>
 
@@ -97,7 +98,34 @@ export function TodayCard({ context }: { context: DailyContext }): React.JSX.Ele
         </View>
       ))}
 
-      {!hasRisks && (
+      {!hasRisks && context.fortune && (
+        <View style={styles.empty}>
+          <View style={styles.meterRow}>
+            <Text style={styles.meterLabel}>오늘의 조심 레벨</Text>
+            <View style={styles.dots}>
+              {[1, 2, 3].map((n) => {
+                const on = n <= (context.fortune?.level ?? 0);
+                return (
+                  <View
+                    key={n}
+                    style={[
+                      styles.dot,
+                      {
+                        backgroundColor: on
+                          ? severityMeta(context.fortune?.level ?? 1).color
+                          : theme.color.border,
+                      },
+                    ]}
+                  />
+                );
+              })}
+            </View>
+          </View>
+          <Text style={styles.emptyText}>특정된 지뢰는 없다. 그래도 방심은 금물.</Text>
+        </View>
+      )}
+
+      {!hasRisks && !context.fortune && (
         <View style={styles.empty}>
           <Text style={styles.emptyText}>
             오늘 특정된 지뢰는 없다. 그래도 방심은 금물 — 흐름을 읽고 한 박자 참아라.
@@ -146,6 +174,32 @@ const styles = StyleSheet.create({
     fontSize: theme.font.caption,
     fontWeight: "800",
     letterSpacing: 1,
+  },
+  fortuneLabel: {
+    color: theme.color.accent,
+    fontSize: theme.font.caption,
+    fontWeight: "800",
+    letterSpacing: 1,
+  },
+  meterRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: theme.space.sm,
+  },
+  meterLabel: {
+    color: theme.color.textMuted,
+    fontSize: theme.font.caption,
+    fontWeight: "700",
+  },
+  dots: {
+    flexDirection: "row",
+    gap: theme.space.xs,
+  },
+  dot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
   },
   hook: {
     color: theme.color.text,

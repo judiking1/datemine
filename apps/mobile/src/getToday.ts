@@ -2,6 +2,7 @@ import { type DailyContext, resolveDay } from "@datemine/domain";
 import { hooksByKey } from "./data/hooks";
 import { MERGE_KEYS, promotedByLunarKey, promotedByMonthDay } from "./data/published";
 import { seedCalendar, seedCardsByLunarKey, seedCardsByMonthDay } from "./data/seed";
+import { dailyFortune } from "./fortune";
 
 type Card = Omit<DailyContext, "date">;
 
@@ -50,15 +51,27 @@ export function getDailyContext(isoDate: string): DailyContext {
     }
   }
 
+  // No specific event → still give the day something: 오늘의 눈치 (general daily caution).
+  if (entry.dayType === "ordinary") {
+    const f = dailyFortune(isoDate);
+    return {
+      date: isoDate,
+      dayType: entry.dayType,
+      hook: f.line,
+      significance: "특정된 이슈는 없는 날. 그래도 오늘의 실언 한 줄이 내일의 기사 제목이 된다.",
+      riskPatterns: [],
+      advice: entry.significance,
+      fortune: { level: f.level, theme: f.theme },
+      reviewedAt: "2026-01-01T00:00:00Z",
+    };
+  }
+
   return {
     date: isoDate,
     dayType: entry.dayType,
     significance: entry.significance,
     riskPatterns: [],
-    advice:
-      entry.dayType === "ordinary"
-        ? "특별한 날은 아니다. 그래도 오늘의 실언 한 줄이 내일의 기사 제목이 될 수 있다."
-        : `${entry.name} — 이 시기의 흐름을 읽고, 단정적·자극적 발언은 한 박자 참아라.`,
+    advice: `${entry.name} — 이 시기의 흐름을 읽고, 단정적·자극적 발언은 한 박자 참아라.`,
     reviewedAt: "2026-01-01T00:00:00Z",
   };
 }
