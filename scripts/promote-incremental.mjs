@@ -52,12 +52,26 @@ const drafts = readdirSync(DRAFTS_DIR)
   .map((n) => JSON.parse(readFileSync(join(DRAFTS_DIR, n), "utf8")));
 
 let added = 0;
+let merged = 0;
 const skipped = [];
 for (const d of drafts) {
   const isLunar = typeof d.key === "string" && d.key.startsWith("lunar:");
   const map = isLunar ? byLunarKey : byMonthDay;
   const mapKey = isLunar ? d.key.slice("lunar:".length) : d.key;
-  if (map[mapKey] && !overwrite) {
+  const existing = map[mapKey];
+
+  // mergeInto: append this draft's patterns onto the existing card on the same date
+  // (e.g. a second theme that falls on a day already published), keeping its hero copy.
+  if (existing && d.mergeInto) {
+    map[mapKey] = {
+      ...existing,
+      riskPatterns: [...existing.riskPatterns, ...d.card.riskPatterns],
+      reviewedAt: STAMP,
+    };
+    merged++;
+    continue;
+  }
+  if (existing && !overwrite) {
     skipped.push(d.key);
     continue;
   }
@@ -83,6 +97,6 @@ const body =
 
 writeFileSync(PUB, header + body);
 console.log(
-  `Promoted ${added} new card(s). Total: ${Object.keys(byMonthDay).length} fixed + ${Object.keys(byLunarKey).length} lunar.` +
+  `Promoted ${added} new + ${merged} merged. Total: ${Object.keys(byMonthDay).length} fixed + ${Object.keys(byLunarKey).length} lunar.` +
     (skipped.length ? `\n  Skipped existing (use --overwrite): ${skipped.join(", ")}` : ""),
 );
