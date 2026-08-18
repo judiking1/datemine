@@ -75,7 +75,9 @@ for (const d of drafts) {
     skipped.push(d.key);
     continue;
   }
-  map[mapKey] = { ...d.card, reviewedAt: STAMP };
+  // Defaults so a mergeInto draft targeting a seed-only day (no promoted entry yet) still
+  // satisfies the Card type; combine() will use the seed card's copy via MERGE_KEYS.
+  map[mapKey] = { significance: "", advice: "", ...d.card, reviewedAt: STAMP };
   if (d.mergeInto && !mergeKeys.includes(d.key)) mergeKeys.push(d.key);
   added++;
 }

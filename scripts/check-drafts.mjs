@@ -88,8 +88,11 @@ for (const file of files) {
   if (!DAY_TYPES.has(card.dayType)) {
     errors.push(`${rel}: invalid card.dayType "${card.dayType}"`);
   }
-  if (!nonEmptyString(card.significance)) errors.push(`${rel}: empty card.significance`);
-  if (!nonEmptyString(card.advice)) errors.push(`${rel}: empty card.advice`);
+  // mergeInto drafts only append riskPatterns; the existing card keeps significance/advice.
+  if (!draft.mergeInto) {
+    if (!nonEmptyString(card.significance)) errors.push(`${rel}: empty card.significance`);
+    if (!nonEmptyString(card.advice)) errors.push(`${rel}: empty card.advice`);
+  }
 
   const patterns = card.riskPatterns;
   if (!Array.isArray(patterns) || patterns.length === 0) {

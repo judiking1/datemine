@@ -4,7 +4,7 @@ import type { DailyContext } from "@datemine/domain";
 
 type Card = Omit<DailyContext, "date">;
 
-export const MERGE_KEYS: readonly string[] = ["03-01"];
+export const MERGE_KEYS: readonly string[] = ["03-01", "07-17"];
 
 export const promotedByMonthDay: Readonly<Record<string, Card>> = {
   "02-08": {
@@ -1009,6 +1009,37 @@ export const promotedByMonthDay: Readonly<Record<string, Card>> = {
     ],
     reviewedAt: "2026-08-16T14:48:39.822Z",
   },
+  "07-17": {
+    dayType: "holiday",
+    hook: "제헌절 정쟁·개헌 소비, 양쪽서 욕먹는다",
+    significance:
+      "제헌절. 2026년 18년 만에 공휴일로 재지정되며 주목도가 커졌다. 개헌·헌정 이념이 정파적으로 소비되기 쉬운 날.",
+    advice:
+      "제헌 정신·헌정 이념을 자기 진영 근거로 소환하거나 경축식을 정쟁 무대로 쓰지 마라. 편을 가리지 않고 역풍이 온다.",
+    riskPatterns: [
+      {
+        pattern: "기념일(경축식·제헌절)을 당면 정국 현안의 정쟁 무대로 전용",
+        whyItBackfires:
+          "제헌절이 18년 만에 공휴일로 재지정되며 주목도가 커진 해엔 더 그렇다. 기념의 자리를 원 구성·개헌 다툼의 '네탓 공방' 무대로 쓰면, 취지를 정략에 소비한다는 비판이 편을 가리지 않고 양쪽을 향한다.",
+        exampleSummary:
+          "제헌절 경축식이 정국 현안 공방과 대표 불참으로 '반쪽 행사'가 되며 기념 취지가 정쟁에 밀렸다는 비판이 반복됐다.",
+        severity: 2,
+        category: "politics",
+        domains: ["politics", "media"],
+      },
+      {
+        pattern: "제헌 정신·헌정 이념을 자기 진영 주장의 정당화 근거로 소환",
+        whyItBackfires:
+          "같은 '제헌 정신'을 양측이 반대 방향의 근거로 끌어다 쓰는 순간, 헌법 이념을 정파 도구로 소비한다는 지적이 나온다. 어느 편을 들어도 반대 진영과 '무신경하다'는 여론 양쪽에서 역풍을 맞는다.",
+        exampleSummary:
+          "제헌절 계기 발언이 헌정 질서·국민주권 같은 헌법 이념을 당면 현안 정당화에 전용했다가 정략 비판을 부른 사례가 반복됐다.",
+        severity: 2,
+        category: "politics",
+        domains: ["politics", "media"],
+      },
+    ],
+    reviewedAt: "2026-08-18T16:01:21.634Z",
+  },
   "07-25": {
     dayType: "solarTerm",
     significance:
@@ -1135,8 +1166,30 @@ export const promotedByMonthDay: Readonly<Record<string, Card>> = {
         category: "appearance",
         domains: ["business", "creator", "medical"],
       },
+      {
+        pattern:
+          "외식 성수기에 예약만 잡고 통보 없이 나타나지 않아 자영업에 피해를 주는 노쇼(예약부도)를 대수롭지 않게 여기거나 미화",
+        whyItBackfires:
+          "휴가·모임이 몰리는 성수기엔 단체 예약 준비가 곧 자영업의 원가다. 통보 없는 노쇼 한 건이 수십만 원대 식자재·인건비를 통째로 날리고, 예약 기반 업종일수록 타격이 크다. 노쇼를 '그럴 수도 있지'로 가볍게 다루거나 편의처럼 소비하는 콘텐츠는 생계형 피해를 겪는 자영업자와 대중의 공분을 부른다.",
+        exampleSummary:
+          "성수기에 단체 예약을 준비해 둔 식당이 통보 없는 노쇼로 준비분을 통째로 날린 사례가 반복 보도됐고, 정부가 위약금 기준 개정과 피해 지원을 확대할 만큼 사회적 공분이 컸다.",
+        severity: 2,
+        category: "gapjil",
+        domains: ["business", "foodservice", "general"],
+      },
+      {
+        pattern:
+          "'노쇼 방지'를 명분으로 과도한 예약금·일방적 환불 불가를 내세워 소비자를 홀대하는 배짱 영업",
+        whyItBackfires:
+          "음식값 절반, 많게는 수십만~백만 원대 예약금을 요구하거나 정당한 취소에도 환불을 막는 관행은 소비자분쟁해결기준의 권고선을 크게 웃돈다. 노쇼 방지라는 취지를 넘어 소비자에게 부당한 부담을 떠넘기는 '배짱 장사'로 읽혀, '배보다 배꼽이 크다'는 반발과 갑질 논란을 부른다. 예약이 몰리는 시기마다 분쟁이 되풀이된다.",
+        exampleSummary:
+          "노쇼 방지를 내세워 권고 기준을 크게 웃도는 예약금을 걸거나 환불을 거부한 식당들이 배짱 영업·갑질 논란으로 반복 지적됐다.",
+        severity: 2,
+        category: "gapjil",
+        domains: ["business", "foodservice", "general"],
+      },
     ],
-    reviewedAt: "2026-08-16T14:48:39.822Z",
+    reviewedAt: "2026-08-18T16:01:21.634Z",
   },
   "08-02": {
     dayType: "ordinary",
@@ -1560,8 +1613,19 @@ export const promotedByMonthDay: Readonly<Record<string, Card>> = {
         category: "ad",
         domains: ["business", "general"],
       },
+      {
+        pattern:
+          "농업인의 날·가래떡데이에 '우리쌀·국산 농산물 사랑'을 앞세운 하루짜리 애국·상생 마케팅",
+        whyItBackfires:
+          "연중 국산 농산물 수매가·납품단가 홀대나 원산지 둔갑 같은 실태와 캠페인의 애국·상생 프레임이 어긋나는 순간, 크게 내건 애국 문구일수록 '하루만 농민 생각하는 척' 생색으로 읽혀 배신감과 조리돌림을 부른다.",
+        exampleSummary:
+          "이날 '우리 농산물 상생'을 내세워 쌀 소비·나눔 이벤트를 집중했지만, 상시적 쌀값 폭락·재고 떠넘기기와 겹쳐 '생색성 하루 행사'라는 냉소가 매년 반복된 사례. '국산'을 전면에 건 판매가 원산지 표시 위반으로 적발돼 애국 마케팅이 부메랑이 된 유형.",
+        severity: 1,
+        category: "nationalism",
+        domains: ["business", "general"],
+      },
     ],
-    reviewedAt: "2026-08-16T14:48:39.822Z",
+    reviewedAt: "2026-08-18T16:01:21.634Z",
   },
   "11-19": {
     dayType: "ordinary",
@@ -1684,6 +1748,39 @@ export const promotedByMonthDay: Readonly<Record<string, Card>> = {
       },
     ],
     reviewedAt: "2026-08-17T07:41:34.427Z",
+  },
+  "12-10": {
+    dayType: "anniversary",
+    hook: "인권을 구호로만 팔면, 자사부터 소환된다",
+    significance:
+      "12월 10일은 세계 인권의 날(세계인권선언 채택일). 인권·존중·다양성을 이야기하기 좋은 날이지만, 구호와 현실이 어긋나면 바로 위선으로 읽힌다. 인권은 마케팅 소재이기 전에 지켜야 할 약속이라는 점을 무겁게 볼 것.",
+    advice:
+      "인권의 날을 캠페인으로 쓰려면, 자사 노동·공급망·사내 인권부터 먼저 점검하라. 소수자를 '소비자'나 '진영 무기'가 아니라 권리의 주체로 대하고, 상징만 빌리는 편승은 피한다. 존중은 하루치 홍보가 아니라 상시 실천으로 증명된다.",
+    riskPatterns: [
+      {
+        pattern:
+          "인권의 날에 '인권경영·존중·다양성'을 내걸지만, 자사 하청·과로·산재·직장 내 인권 문제와 충돌하는 유형",
+        whyItBackfires:
+          "선언과 현실의 괴리가 드러나면 홍보 자체가 위선 인증이 된다. 인권을 이미지로 소비했다는 비판이 노조·시민사회로 번져 브랜드 신뢰를 깎는다.",
+        exampleSummary:
+          "인권·다양성 존중을 대대적으로 선언한 직후, 초과근무 강요·노동인권 논란에 휘말려 '보여주기식 인권경영'이라는 비판을 받은 사례",
+        severity: 2,
+        category: "minority",
+        domains: ["business", "media"],
+      },
+      {
+        pattern:
+          "소수자 인권을 '소비 대상'(상징·굿즈)으로 대상화하거나, 차별·혐오 이슈를 진영 대립·편 가르기 소재로 소비하는 유형",
+        whyItBackfires:
+          "실질적 지지나 정책 변화 없이 상징만 빌리면 진정성 없는 편승으로 읽히고, 인권을 정쟁에 이용한다는 인상까지 더해져 지지·반대 양쪽에서 역풍을 맞는다. 정작 당사자 권리 논의는 실종된다.",
+        exampleSummary:
+          "특정 시장에서만 다양성 상징을 쓰는 이중잣대, 또는 소수자 이슈를 지지층 결집용 대립 소재로 다뤄 '권리 주체가 아니라 소비 대상으로 본다'는 반발을 부른 사례",
+        severity: 2,
+        category: "minority",
+        domains: ["business", "media", "politics"],
+      },
+    ],
+    reviewedAt: "2026-08-18T16:01:21.634Z",
   },
   "12-20": {
     dayType: "ordinary",
