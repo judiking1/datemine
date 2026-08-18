@@ -36,8 +36,11 @@ nationalism), 7/17 초복(food), 설날·추석 명절(gender+generation, lunarK
 오늘 카드(심각도/카테고리 칩·요일·엠프티) → **레퍼런스 목록**(`ReferenceList`/`upcoming.ts`,
 발행 카드 연표) → 면책 푸터. `.claude/launch.json`의 `mobile-web`로 프리뷰.
 
-## 대량 수집·발행 현황 (2026-08-17)
-- **발행 57일치(후보 69일의 82.6%).** 전 카테고리 센 카피 훅 적용.
+## 대량 수집·발행 현황 (2026-08-18)
+- **발행 64일치(후보 69일의 92.8%).** 전 카테고리 센 카피 훅 적용.
+- 충돌일은 append 병합: 07-17(초복+제헌절), 11-11(빼빼로+농업인의날), 08-01(바캉스+노쇼).
+  `promote-incremental.mjs`가 mergeInto 지원(MERGE_KEYS 또는 promoted 내 in-place).
+- 성년의날(05-18)은 광주 추모일과 충돌해 톤상 병합 부적절 → 보류.
 - **카피 톤**: 각 카드에 `hook`(한 방 문구) 히어로. 기존 34개는 `apps/mobile/src/data/hooks.ts`,
   신규분은 카드 자체의 `card.hook`. getToday가 card.hook 우선. 추모/재난은 존중 톤 유지.
 - **증분 수집**: `scripts/promote-incremental.mjs`(기존 유지+신규 병합) → `published.ts`.
