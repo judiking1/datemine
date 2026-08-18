@@ -18,9 +18,21 @@ export function dailyFortune(isoDate: string): Fortune {
   return fortune as Fortune;
 }
 
-/** Stable per-day evergreen landmine (상시 지뢰). Salted differently so it doesn't
- * correlate with the day's fortune pick. */
-export function dailyEvergreen(isoDate: string): RiskPattern {
-  const item = EVERGREEN[hashCode(isoDate, 7) % EVERGREEN.length];
-  return item as RiskPattern;
+/** Stable per-day set of distinct 상시 지뢰 (default 3). Deterministic per date, salted so
+ * it doesn't correlate with the fortune pick; walks with a step to spread picks out. */
+export function dailyEvergreens(isoDate: string, count = 3): RiskPattern[] {
+  const n = Math.min(count, EVERGREEN.length);
+  const start = hashCode(isoDate, 7) % EVERGREEN.length;
+  const step = 1 + (hashCode(isoDate, 13) % (EVERGREEN.length - 1));
+  const picks: RiskPattern[] = [];
+  const seen = new Set<number>();
+  let idx = start;
+  while (picks.length < n) {
+    if (!seen.has(idx)) {
+      seen.add(idx);
+      picks.push(EVERGREEN[idx] as RiskPattern);
+    }
+    idx = (idx + step) % EVERGREEN.length;
+  }
+  return picks;
 }

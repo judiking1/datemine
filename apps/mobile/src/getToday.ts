@@ -2,7 +2,7 @@ import { type DailyContext, resolveDay } from "@datemine/domain";
 import { hooksByKey } from "./data/hooks";
 import { MERGE_KEYS, promotedByLunarKey, promotedByMonthDay } from "./data/published";
 import { seedCalendar, seedCardsByLunarKey, seedCardsByMonthDay } from "./data/seed";
-import { dailyEvergreen, dailyFortune } from "./fortune";
+import { dailyEvergreens, dailyFortune } from "./fortune";
 
 type Card = Omit<DailyContext, "date">;
 
@@ -58,8 +58,8 @@ export function getDailyContext(isoDate: string): DailyContext {
       date: isoDate,
       dayType: entry.dayType,
       hook: f.line,
-      significance: "특정된 이슈는 없는 날. 그래도 지뢰는 매일 터진다 — 오늘의 상시 지뢰 하나.",
-      riskPatterns: [dailyEvergreen(isoDate)],
+      significance: "특정된 이슈는 없는 날. 그래도 지뢰는 매일 터진다.",
+      riskPatterns: dailyEvergreens(isoDate, 3),
       advice: entry.significance,
       fortune: { level: f.level, theme: f.theme },
       reviewedAt: "2026-01-01T00:00:00Z",

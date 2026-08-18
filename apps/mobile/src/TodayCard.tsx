@@ -60,8 +60,9 @@ export function TodayCard({ context }: { context: DailyContext }): React.JSX.Ele
         <Text style={styles.adviceLabel}>종합 충고</Text>
       ) : null}
       {context.hook && <Text style={styles.hook}>{context.hook}</Text>}
-      <Text style={context.hook ? styles.adviceUnderHook : styles.advice}>{context.advice}</Text>
-      <Text style={styles.significance}>{context.significance}</Text>
+      <Text style={context.hook ? styles.adviceUnderHook : styles.advice} numberOfLines={2}>
+        {context.advice}
+      </Text>
 
       {hasRisks && (
         <View style={styles.sectionRow}>
@@ -92,8 +93,9 @@ export function TodayCard({ context }: { context: DailyContext }): React.JSX.Ele
                   </View>
                 </View>
                 <Text style={styles.riskPattern}>{risk.pattern}</Text>
-                <Text style={styles.riskWhy}>{risk.whyItBackfires}</Text>
-                <Text style={styles.riskExample}>{risk.exampleSummary}</Text>
+                <Text style={styles.riskWhy} numberOfLines={2}>
+                  {risk.whyItBackfires}
+                </Text>
               </View>
             );
           })}
