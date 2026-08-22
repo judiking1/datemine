@@ -2,7 +2,7 @@ import { type DailyContext, resolveDay } from "@datemine/domain";
 import { hooksByKey } from "./data/hooks";
 import { MERGE_KEYS, promotedByLunarKey, promotedByMonthDay } from "./data/published";
 import { seedCalendar, seedCardsByLunarKey, seedCardsByMonthDay } from "./data/seed";
-import { dailyEvergreens, dailyFortune } from "./fortune";
+import { dailyEvergreens, dailyFortune, pickOnThisDay } from "./fortune";
 
 type Card = Omit<DailyContext, "date">;
 
@@ -24,12 +24,19 @@ function combine(
   return promoted ?? seed;
 }
 
+/** Public entry: resolve the day, then attach "그날의 뇌관" (this-day-in-history) if any. */
+export function getDailyContext(isoDate: string): DailyContext {
+  const ctx = resolveContext(isoDate);
+  const otd = pickOnThisDay(isoDate);
+  return otd ? { ...ctx, onThisDay: otd } : ctx;
+}
+
 /**
  * Resolve a day's DailyContext. Priority: fixed-date card (seed + promoted) → lunar-holiday
  * card → non-empty calendar fallback, so the app never shows an empty day (see the
  * daily-content guarantee).
  */
-export function getDailyContext(isoDate: string): DailyContext {
+function resolveContext(isoDate: string): DailyContext {
   const md = monthDay(isoDate);
   const card = combine(seedCardsByMonthDay[md], promotedByMonthDay[md], md);
   if (card) {

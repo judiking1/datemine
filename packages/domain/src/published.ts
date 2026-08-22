@@ -57,6 +57,13 @@ export interface DailyContext {
     readonly level: Severity;
     readonly theme: string;
   };
+  /** "그날의 뇌관" — a this-day-in-history event that makes today's topic sensitive. */
+  readonly onThisDay?: {
+    readonly year: number;
+    readonly event: string;
+    readonly caution: string;
+    readonly level: Severity;
+  };
 }
 
 /** A DailyContext is publishable only after passing the human review gate. */

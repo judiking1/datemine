@@ -64,6 +64,18 @@ export function TodayCard({ context }: { context: DailyContext }): React.JSX.Ele
         {context.advice}
       </Text>
 
+      {context.onThisDay && (
+        <View
+          style={[styles.otd, { borderLeftColor: severityMeta(context.onThisDay.level).color }]}
+        >
+          <Text style={styles.otdLabel}>그날의 뇌관 · {context.onThisDay.year}년 오늘</Text>
+          <Text style={styles.otdEvent}>{context.onThisDay.event}</Text>
+          <Text style={styles.otdCaution} numberOfLines={2}>
+            {context.onThisDay.caution}
+          </Text>
+        </View>
+      )}
+
       {hasRisks && (
         <View style={styles.sectionRow}>
           <Text style={styles.sectionLabel}>
@@ -184,6 +196,29 @@ const styles = StyleSheet.create({
     fontSize: theme.font.caption,
     fontWeight: "800",
     letterSpacing: 1,
+  },
+  otd: {
+    backgroundColor: theme.color.bg,
+    borderRadius: theme.radius.md,
+    borderLeftWidth: 3,
+    padding: theme.space.md,
+    gap: 2,
+  },
+  otdLabel: {
+    color: theme.color.textMuted,
+    fontSize: theme.font.caption,
+    fontWeight: "800",
+    letterSpacing: 0.5,
+  },
+  otdEvent: {
+    color: theme.color.text,
+    fontSize: theme.font.body,
+    fontWeight: "700",
+  },
+  otdCaution: {
+    color: theme.color.textMuted,
+    fontSize: theme.font.caption,
+    lineHeight: 18,
   },
   meterRow: {
     flexDirection: "row",
