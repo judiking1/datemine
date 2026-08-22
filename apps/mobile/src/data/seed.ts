@@ -163,6 +163,24 @@ export const seedCalendar: CalendarData = {
         dayType: "holiday",
         lunarKey: "chuseok",
       },
+      "2026-03-03": {
+        name: "정월대보름",
+        significance: "음력 첫 보름. 달집·쥐불놀이 등 불놀이 풍속과 산불철이 겹친다.",
+        dayType: "holiday",
+        lunarKey: "daeboreum",
+      },
+      "2026-05-24": {
+        name: "부처님오신날",
+        significance: "석가탄신일. 봉축 시즌의 종교 감수성이 예민해진다.",
+        dayType: "holiday",
+        lunarKey: "buddha",
+      },
+      "2026-08-19": {
+        name: "칠석",
+        significance: "음력 7월 7일. 견우직녀 세시명절이 '한국판 발렌타인'으로 상업화된다.",
+        dayType: "holiday",
+        lunarKey: "chilseok",
+      },
     },
   },
 };
