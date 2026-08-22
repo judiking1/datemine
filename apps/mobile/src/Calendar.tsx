@@ -1,6 +1,7 @@
 import { toIsoDate } from "@datemine/domain";
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { onThisDayIsoDates } from "./data/onthisday";
 import { theme } from "./theme";
 import { publishedIsoDates } from "./upcoming";
 
@@ -39,6 +40,7 @@ export function Calendar({
   }));
   const today = toIsoDate(new Date());
   const published = publishedIsoDates(view.year);
+  const brain = onThisDayIsoDates(view.year);
   const cells = monthCells(view.year, view.month0);
 
   const stepMonth = (delta: number) => {
@@ -73,6 +75,7 @@ export function Calendar({
           if (!iso) return <View key={key} style={styles.cell} />;
           const day = Number(iso.slice(8));
           const isPublished = published.has(iso);
+          const isBrain = !isPublished && brain.has(iso);
           const isSelected = iso === selected;
           const isToday = iso === today;
           return (
@@ -82,6 +85,7 @@ export function Calendar({
                 styles.cell,
                 styles.dayCell,
                 isPublished && styles.published,
+                isBrain && styles.brain,
                 isSelected && styles.selected,
               ]}
               onPress={() => onSelect(iso)}
@@ -89,7 +93,7 @@ export function Calendar({
               <Text
                 style={[
                   styles.dayText,
-                  isPublished && styles.dataText,
+                  (isPublished || isBrain) && styles.dataText,
                   isToday && styles.todayText,
                 ]}
               >
@@ -103,7 +107,9 @@ export function Calendar({
 
       <View style={styles.legendRow}>
         <View style={[styles.legendDot, { backgroundColor: theme.color.accent }]} />
-        <Text style={styles.legend}>조심할 데이터가 있는 날</Text>
+        <Text style={styles.legend}>발행 카드</Text>
+        <View style={styles.legendRing} />
+        <Text style={styles.legend}>그날의 뇌관</Text>
       </View>
     </View>
   );
@@ -151,7 +157,9 @@ const styles = StyleSheet.create({
   dayText: { color: theme.color.textMuted, fontSize: theme.font.body },
   // Data days: solid fill so they clearly stand out from empty days.
   published: { backgroundColor: theme.color.accent },
-  // Selection: border only, so it never masquerades as a data day.
+  // 그날의 뇌관: accent border only (distinct from published's solid fill).
+  brain: { borderColor: theme.color.accent },
+  // Selection: white border, so it never masquerades as a data day.
   selected: { borderColor: theme.color.text },
   dataText: { color: theme.color.text, fontWeight: "800" },
   todayText: { textDecorationLine: "underline" },
@@ -175,7 +183,7 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 3,
     borderWidth: 2,
-    borderColor: theme.color.text,
+    borderColor: theme.color.accent,
   },
   legend: {
     color: theme.color.textMuted,

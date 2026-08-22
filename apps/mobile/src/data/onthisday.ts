@@ -12,6 +12,11 @@ export type OnThisDay = {
   readonly level: Severity;
 };
 
+/** ISO dates (for the given year) that carry a 그날의 뇌관 — used to mark the calendar. */
+export function onThisDayIsoDates(year: number): Set<string> {
+  return new Set(Object.keys(ON_THIS_DAY).map((md) => `${year}-${md}`));
+}
+
 export const ON_THIS_DAY: Readonly<Record<string, readonly OnThisDay[]>> = {
   "01-27": [
     {
@@ -321,6 +326,182 @@ export const ON_THIS_DAY: Readonly<Record<string, readonly OnThisDay[]>> = {
       event: "위안부 피해자 기림의 날 (국가기념일)",
       caution: "피해 역사를 굿즈·농담으로 다루면 2차 가해.",
       level: 3,
+    },
+  ],
+  "02-08": [
+    {
+      year: 1919,
+      event: "2·8 독립선언 (도쿄 유학생)",
+      caution: "덜 알려진 항일 기념일, 일본풍 무신경 사용 조심.",
+      level: 1,
+    },
+  ],
+  "02-14": [
+    {
+      year: 1910,
+      event: "안중근 의사 사형 선고 · 밸런타인데이",
+      caution: "이 날 겹친 항일 역사, 무신경 일본 소재 뇌관.",
+      level: 1,
+    },
+  ],
+  "02-28": [
+    {
+      year: 1960,
+      event: "2·28 대구 민주운동",
+      caution: "민주화 역사 폄훼·왜곡은 상시 뇌관.",
+      level: 1,
+    },
+  ],
+  "03-01": [
+    {
+      year: 1919,
+      event: "3·1 운동",
+      caution: "반일·역사 감수성 최고조. 일본 소재·과거 발언 조심.",
+      level: 2,
+    },
+  ],
+  "03-08": [
+    {
+      year: 1908,
+      event: "세계 여성의 날",
+      caution: "젠더 상술·백래시 편승은 양쪽서 역풍.",
+      level: 2,
+    },
+  ],
+  "04-11": [
+    {
+      year: 1919,
+      event: "대한민국 임시정부 수립",
+      caution: "독립·건국 서사가 예민. 역사 왜곡 편승 조심.",
+      level: 1,
+    },
+  ],
+  "04-15": [
+    {
+      year: 2013,
+      event: "보스턴 마라톤 테러",
+      caution: "테러·인명피해를 밈·소재로 쓰면 국제적 반발.",
+      level: 1,
+    },
+  ],
+  "04-27": [
+    {
+      year: 2018,
+      event: "판문점 선언",
+      caution: "대북·통일 발언은 진영 뇌관. 편승 신중.",
+      level: 1,
+    },
+  ],
+  "06-10": [
+    {
+      year: 1987,
+      event: "6·10 민주항쟁",
+      caution: "기념일을 정쟁 도구로 쓰면 양쪽서 역풍.",
+      level: 2,
+    },
+  ],
+  "06-13": [
+    {
+      year: 2002,
+      event: "미군 장갑차 여중생 사망 사건",
+      caution: "주한미군·주권 감수성. 가볍게 다루면 반발.",
+      level: 2,
+    },
+  ],
+  "06-15": [
+    {
+      year: 2000,
+      event: "6·15 남북공동선언",
+      caution: "대북·통일 소재는 진영 뇌관. 편향 편승 금지.",
+      level: 1,
+    },
+  ],
+  "07-22": [
+    {
+      year: 2011,
+      event: "노르웨이 위토야 테러",
+      caution: "극단주의·대량학살을 소재화하면 반발.",
+      level: 1,
+    },
+  ],
+  "08-06": [
+    {
+      year: 1945,
+      event: "히로시마 원폭 투하",
+      caution: "핵·전쟁 참사를 가벼운 소재로 쓰지 마라.",
+      level: 2,
+    },
+  ],
+  "08-09": [
+    {
+      year: 1945,
+      event: "나가사키 원폭 투하",
+      caution: "핵·전쟁 참사를 가벼운 소재로 쓰지 마라.",
+      level: 2,
+    },
+  ],
+  "08-22": [
+    {
+      year: 1910,
+      event: "한일병합조약 조인",
+      caution: "국권 피탈 역사, 일본풍 무신경 사용 뇌관.",
+      level: 2,
+    },
+  ],
+  "09-28": [
+    {
+      year: 1950,
+      event: "서울 수복",
+      caution: "전쟁·분단 서사는 진영 감수성. 편승 조심.",
+      level: 1,
+    },
+  ],
+  "10-01": [
+    {
+      year: 1956,
+      event: "국군의 날",
+      caution: "시가행진·공휴일 정치화가 진영 공방으로.",
+      level: 1,
+    },
+  ],
+  "10-03": [
+    {
+      year: -2333,
+      event: "개천절 (단군 건국 신화)",
+      caution: "'건국 기점' 논쟁에 편승하면 반쪽서 역풍.",
+      level: 1,
+    },
+  ],
+  "11-03": [
+    {
+      year: 1929,
+      event: "광주학생항일운동 (학생독립운동기념일)",
+      caution: "항일·학생운동 역사 폄훼는 뇌관.",
+      level: 1,
+    },
+  ],
+  "11-21": [
+    {
+      year: 1997,
+      event: "IMF 구제금융 신청",
+      caution: "경제위기·실직 서사를 가볍게 다루면 반감.",
+      level: 1,
+    },
+  ],
+  "12-26": [
+    {
+      year: 2004,
+      event: "인도양 대지진·쓰나미",
+      caution: "대형 재난을 소재·판촉으로 쓰면 반발.",
+      level: 2,
+    },
+  ],
+  "12-28": [
+    {
+      year: 2015,
+      event: "한일 위안부 합의",
+      caution: "피해자 배제 논란. 위안부 소재 무신경 사용 뇌관.",
+      level: 2,
     },
   ],
 };
