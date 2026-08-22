@@ -417,6 +417,33 @@ export const promotedByMonthDay: Readonly<Record<string, Card>> = {
     ],
     reviewedAt: "2026-08-16T14:48:39.822Z",
   },
+  "04-05": {
+    significance:
+      "식목일. 나무 심는 날이지만, 하루짜리 식수 이벤트와 실제 산림·환경 정책 사이의 괴리가 매년 도마에 오른다.",
+    advice:
+      "식목일에 나무 심는 컷 올릴 거면, 그 나무 1년 뒤 사후관리·실제 환경 실천까지 같이 말할 수 있을 때만 꺼내라.",
+    dayType: "anniversary",
+    hook: "심는 사진 말고, 지키는 계획을",
+    riskPatterns: [
+      {
+        pattern: "하루 식수 이벤트로 친환경 생색",
+        whyItBackfires: "심은 뒤 방치 드러나면 보여주기로 역풍.",
+        exampleSummary: "사진만 남고 나무는 고사.",
+        severity: 1,
+        category: "animalEnv",
+        domains: ["business", "media", "general"],
+      },
+      {
+        pattern: "나무 심기 홍보 vs 실제 벌목·개발",
+        whyItBackfires: "말과 사업이 반대면 그린워싱 인증.",
+        exampleSummary: "초록 이미지, 반대 행보.",
+        severity: 1,
+        category: "animalEnv",
+        domains: ["business", "media", "general"],
+      },
+    ],
+    reviewedAt: "2026-08-22T14:59:23.064Z",
+  },
   "04-16": {
     dayType: "memorial",
     significance:
@@ -685,6 +712,33 @@ export const promotedByMonthDay: Readonly<Record<string, Card>> = {
       },
     ],
     reviewedAt: "2026-08-17T14:26:19.316Z",
+  },
+  "05-15": {
+    significance:
+      "스승의 날. 감사의 날이지만, 촌지 관행의 잔상과 청탁금지법 사이에서 매년 선물 논란이 재연되고, 교권 추락으로 '존경 서사'와 현장 온도가 어긋난다.",
+    advice:
+      "선물 프레임도 미담 서사도 안이하게 꺼내지 마라. 법 기준과 교권 현실을 모르면 그 자리서 무신경으로 찍힌다.",
+    dayType: "anniversary",
+    hook: "카네이션 한 송이도 법에 걸린다",
+    riskPatterns: [
+      {
+        pattern: "'선생님께 선물' 관행 무신경 소비",
+        whyItBackfires: "촌지의 잔상, 법 기준 무시하면 그날로 표적.",
+        exampleSummary: "선물 미화가 곧 논란.",
+        severity: 2,
+        category: "class",
+        domains: ["academia", "business", "media"],
+      },
+      {
+        pattern: "교권 뺀 '존경·감사' 서사만 남발",
+        whyItBackfires: "현장 안 읽은 미담, 교사엔 공허하게 박힌다.",
+        exampleSummary: "감동팔이가 반감 부른다.",
+        severity: 2,
+        category: "class",
+        domains: ["academia", "media", "general"],
+      },
+    ],
+    reviewedAt: "2026-08-22T14:59:23.064Z",
   },
   "05-18": {
     dayType: "memorial",
@@ -1391,6 +1445,33 @@ export const promotedByMonthDay: Readonly<Record<string, Card>> = {
     ],
     reviewedAt: "2026-08-17T07:41:34.427Z",
   },
+  "09-10": {
+    significance:
+      "세계 자살예방의 날. WHO·국제자살예방협회가 2003년 제정한, 생명 존중과 예방을 되새기는 날.",
+    advice:
+      "자살을 다룰 땐 방법·수단·정황 묘사 없이, 자극적 표현과 미화·희화화를 피하고 도움받을 곳을 함께 알리세요. 겨누는 건 당사자·유가족이 아니라 생명을 조회수로 소비하는 연출입니다.",
+    dayType: "anniversary",
+    hook: "오늘은 '자극' 말고 '존중'",
+    riskPatterns: [
+      {
+        pattern: "자살을 자극적·선정적으로 다루기",
+        whyItBackfires: "상세 묘사·선정 보도는 모방 위험을 키운다.",
+        exampleSummary: "조회수 노린 무신경.",
+        severity: 3,
+        category: "minority",
+        domains: ["media", "creator"],
+      },
+      {
+        pattern: "자살을 개그 소재·해결책처럼 미화",
+        whyItBackfires: "희화화·미화는 당사자엔 조롱, 취약층엔 신호.",
+        exampleSummary: "웃음·극적 연출로 소비.",
+        severity: 3,
+        category: "minority",
+        domains: ["entertainment", "creator"],
+      },
+    ],
+    reviewedAt: "2026-08-22T14:59:23.064Z",
+  },
   "10-01": {
     dayType: "anniversary",
     hook: "국군의 날 정치화, 군심도 표심도 잃는다",
@@ -1585,6 +1666,33 @@ export const promotedByMonthDay: Readonly<Record<string, Card>> = {
       },
     ],
     reviewedAt: "2026-08-16T14:48:39.822Z",
+  },
+  "11-09": {
+    significance:
+      "소방의 날. 소방관의 헌신에 감사하는 법정기념일이자, 처우·안전·인력 문제가 해마다 소환되는 날.",
+    advice:
+      "감사 메시지·영웅 서사만 앞세우지 말고, 인력·안전·예산 같은 실제 처우를 함께 말하라. 하루짜리 생색은 당사자가 먼저 알아본다.",
+    dayType: "anniversary",
+    hook: "'영웅'이라 부르기 전에 장비부터 보라",
+    riskPatterns: [
+      {
+        pattern: "소방관을 '영웅'으로만 소비하기",
+        whyItBackfires: "칭송뿐인 감사, 방치된 처우와 대조돼 역풍.",
+        exampleSummary: "생존권보다 영웅 프레임.",
+        severity: 2,
+        category: "labor",
+        domains: ["politics", "media", "general"],
+      },
+      {
+        pattern: "하루짜리 감사로 생색내기",
+        whyItBackfires: "이날만 챙기는 척, 연중 방치가 드러난다.",
+        exampleSummary: "당사자가 먼저 알아본다.",
+        severity: 2,
+        category: "labor",
+        domains: ["business", "politics", "media"],
+      },
+    ],
+    reviewedAt: "2026-08-22T14:59:23.064Z",
   },
   "11-11": {
     dayType: "anniversary",
@@ -1941,6 +2049,51 @@ export const promotedByMonthDay: Readonly<Record<string, Card>> = {
 };
 
 export const promotedByLunarKey: Readonly<Record<string, Card>> = {
+  buddha: {
+    significance:
+      "부처님오신날(음력 4월 8일). 봉축 시즌엔 불교 상징을 가볍게 다룬 마케팅·발언이 매년 형평성·존중 논란에 오른다.",
+    advice:
+      "불상·연등 같은 상징을 판촉 소품이나 재미 요소로 쓰기 전에, 신자에게 그것이 신앙의 대상이라는 점을 먼저 떠올려라.",
+    dayType: "holiday",
+    hook: "봉축, 종교는 소품이 아니다",
+    riskPatterns: [
+      {
+        pattern: "불상·부처 형상을 상품·광고의 재미 요소로 소비",
+        whyItBackfires: "신앙의 대상을 소품처럼 쓰면 훼불 논란이 된다.",
+        exampleSummary: "종교 상징 상업화가 반발을 부른 사례.",
+        severity: 2,
+        category: "religion",
+        domains: ["business", "creator", "fashion"],
+      },
+      {
+        pattern: "공적 자리·예산에서 특정 종교 편향·홀대 드러내기",
+        whyItBackfires: "다종교 사회에선 한쪽 전제가 곧 형평성 시비다.",
+        exampleSummary: "공인의 종교 편향이 논란된 사례.",
+        severity: 2,
+        category: "religion",
+        domains: ["politics", "media", "general"],
+      },
+    ],
+    reviewedAt: "2026-08-22T14:59:23.064Z",
+  },
+  chilseok: {
+    significance:
+      "칠석(음력 7월 7일) — 견우직녀 설화의 세시명절. 본래 걸교·바느질 솜씨 빌기, 옷·책을 볕에 말리던 날. 요즘은 '한국판 발렌타인데이'로 포장돼 커플 소비일로 밀린다.",
+    advice:
+      "전통 명절에 '연인의 날' 상술을 억지로 얹지 말 것. 끼워맞춘 기념일은 소비자가 먼저 알아본다.",
+    dayType: "holiday",
+    riskPatterns: [
+      {
+        pattern: "칠석을 '한국판 발렌타인'으로 억지 포장",
+        whyItBackfires: "끼워맞춘 기념일 상술, 피로감부터 산다.",
+        exampleSummary: "전통 지우고 커플 소비 밀기.",
+        severity: 1,
+        category: "ad",
+        domains: ["business", "media"],
+      },
+    ],
+    reviewedAt: "2026-08-22T14:59:23.064Z",
+  },
   daeboreum: {
     dayType: "holiday",
     significance:
